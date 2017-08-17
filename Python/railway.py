@@ -1,26 +1,27 @@
 import requests
 
-r = requests.get('http://api.railwayapi.com/v2/live/train/12012/date/17-08-2017/apikey/m6fb4klhgh/')
-p = r.json()
-print(p)
-print("************************")
-print(p['route'][0]['schdep'])
+class RailwatApi():
+    def __init__(self,train_no,date):
+        self.train_no = str(train_no)
+        self.date = str(date)
 
-'''
-import urllib.request
-import urllib.parse
+    def getJson(self):
+         req = requests.get('http://api.railwayapi.com/v2/live/train/{}/date/{}/apikey/m6fb4klhgh/'.format(self.train_no,self.date))
+         data = req.json()
+         return data
+    def stationlist(self):
+        data = self.getJson()
+        stationlist = []
+        for i in range(0,len(data['route'])):
+             stationlist.append(data['route'][i]['station']['name'])
+        return stationlist
 
 
-url = 'http://api.railwayapi.com/v2/live/train/12012/date/17-08-2017/apikey/m6fb4klhgh/'
-f = urllib.request.urlopen(url)
-print(f.read().decode('utf-8'))
 
-'''
 
-'''
-import urllib.request,json
+api = RailwatApi('12012','17-08-2017')
+l = api.stationlist()
+print(l)
 
-with urllib.request.urlopen("http://api.railwayapi.com/v2/live/train/12012/date/17-08-2017/apikey/m6fb4klhgh/") as url:
-    data = json.loads(url.read().decode())
-    print(data)
-'''
+
+
