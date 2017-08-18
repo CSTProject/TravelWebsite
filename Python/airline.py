@@ -86,8 +86,6 @@ ori = ['IXC','DEL']
 dest = ['IXC','DEL']
 spiders = Spider(ori[1],dest[0])
 
-temp = ["  dfdf \n","as   asd"]
-print(spiders.FixData(temp,len(temp)))
 
 
 list1 = spiders.GetPrices()
