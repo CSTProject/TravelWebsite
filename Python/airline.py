@@ -28,58 +28,67 @@ class Spider():
             data.append(table.text)
         return len(data)
 
-    def FixData(self, fixthis):
-        '''TODO Remove spaces and escape sequences from passed list '''
+    def FixData(self, fixthis, length):
+        for i in range(0,length):
+            fixthis[i] = fixthis[i].replace("\n","")
+            fixthis[i] = " ".join(fixthis[i].split())
+            fixthis[i] = fixthis[i].strip()
+        return fixthis
+
 
     def GetPrices(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'price'}):
             data.append(table.text )
-        return data
+        return self.FixData(data,self.GetLength())
 
     def GetDepartureTime(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'depart'}):
             data.append(table.text)
-        return data
+        return self.FixData(data,self.GetLength())
     def GetArrivalTime(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'arrive'}):
             data.append(table.text)
-        return data
+        return self.FixData(data,self.GetLength())
     def GetDurationTime(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'duration'}):
             data.append(table.text)
-        return data
+        return self.FixData(data,self.GetLength())
     def GetDurationType(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('td', {'class':'duration'}):
             data.append(table.text)
-        return data
+        return self.FixData(data,self.GetLength())
     def GetRoute(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('td', {'class':'route'}):
             data.append(table.text)
-        return data
+        return self.FixData(data,self.GetLength())
     def GetVendor(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'vendor'}):
             data.append(table.text)
-        return data
+        return self.FixData(data,self.GetLength())
 
 
 '''CODE BELOW ONLY FOR DEBUGGING AND TESTING'''
 ori = ['IXC','DEL']
 dest = ['IXC','DEL']
 spiders = Spider(ori[1],dest[0])
+
+temp = ["  dfdf \n","as   asd"]
+print(spiders.FixData(temp,len(temp)))
+
 
 list1 = spiders.GetPrices()
 list2 = spiders.GetDepartureTime()
