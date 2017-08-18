@@ -14,24 +14,24 @@ class Client(QWebPage):
 
     def on_page_load(self):
         self.app.quit()
-origin = 'VIDP'
-dest = 'VOBL'
-url = 'https://uk.flightaware.com/live/findflight?origin=' + origin + '&destination=' + dest
-client_response = Client(url)
-source = client_response.mainFrame().toHtml()
 
-def routes_spider(max_pages):
-    page = 1
+class Spider(Client):
+    def __init__(self, origin, destination):
+        url = 'https://uk.flightaware.com/live/findflight?origin=' + origin + '&destination=' + destination
+        ClObj = Client(url)
+        client_response = ClObj
+        self.source = client_response.mainFrame().toHtml()
 
-    while page <= max_pages:
 
-        plain_text = source
-        soup = BeautifulSoup(plain_text, "lxml")
+    def routes_spider(self):
+        soup = BeautifulSoup(self.source, "lxml")
         for table in soup.findAll('table', {'id':'Results'}):
             plain_text = table.text
             print(plain_text)
 
 
-        page +=1
 
-routes_spider(1)
+ori = 'VIDP'
+dest = 'VOBL'
+spider = Spider(ori,dest)
+spider.routes_spider()
