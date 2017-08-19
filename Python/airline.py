@@ -79,6 +79,20 @@ class Spider():
         for table in soup.findAll('th', {'class':'vendor'}):
             data.append(table.text)
         return self.FixData(data,self.GetLength())
+    def GetDictionary(self):
+        dict = {}
+        list1 = self.GetPrices()
+        list2 = self.GetDepartureTime()
+        list3 = self.GetDurationTime()
+        list4 = self.GetStops()
+        list5 = self.GetArrivalTime()
+        list6 = self.GetRoute()
+        list7 = self.GetVendor()
+        for position in range(0,self.GetLength()):
+            dict[position+1] = [list1[position],list2[position],list3[position],list4[position],list5[position],list6[position],list7[position]]
+        return dict
+
+
 
 
 '''CODE BELOW ONLY FOR DEBUGGING AND TESTING'''
@@ -115,6 +129,6 @@ for i in range(0,spiders.GetLength()):
     print('Number of Stops: ' + list4[i])
     print('Route: ' + list6[i])
 
-
+print(spiders.GetDictionary())
 
 
