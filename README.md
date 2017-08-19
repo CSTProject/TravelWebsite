@@ -2,7 +2,7 @@
 Our Project for CST. Developing a website while focusing more on the front-end.
 
 # Running the Website on LOCALHOST
-First, make sure you have Python3 installed. Then, run manage.py using the below command under the TravelWebsite Folder
+First, make sure you have Python3 and Django installed. Then, run manage.py using the below command under the TravelWebsite Folder
 ```sh
 $ python3 manage.py runserver
 ```
