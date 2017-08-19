@@ -16,8 +16,8 @@ class Client(QWebPage):
         self.app.quit()
 
 class Spider():
-    def __init__(self, origin, destination):
-        url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination +'&depart_date=20/08/2017&adults=1&childs=0&infants=0&class=Economy&airline=&carrier=&intl=n&sd=1503042323330&page=loaded'
+    def __init__(self, origin, destination, date, adults, childs, infants):
+        url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination + '&depart_date=' + date + '&adults=' + adults + '&childs=' + childs + '&infants=' + infants + '&sortType0=price&sortOrder0=sortAsc&page=loaded'
         client_response = Client(url)
         self.source = client_response.mainFrame().toHtml()
 
@@ -61,7 +61,7 @@ class Spider():
         for table in soup.findAll('th', {'class':'duration'}):
             data.append(table.text)
         return self.FixData(data,self.GetLength())
-    def GetDurationType(self):
+    def GetStops(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('td', {'class':'duration'}):
@@ -82,27 +82,38 @@ class Spider():
 
 
 '''CODE BELOW ONLY FOR DEBUGGING AND TESTING'''
-ori = ['IXC','DEL']
-dest = ['IXC','DEL']
-spiders = Spider(ori[1],dest[0])
+print("Enter Start Location")
+start = input()
+print("Enter Stop Location")
+end = input()
+print("Enter Date in format dd/mm/yyyy")
+date = input()
+print("Enter Adults")
+adults = input()
+print("Enter Childs")
+child = input()
+print("Enter Infants")
+infant = input()
+print("Processing...")
+spiders = Spider(start,end,date,adults,child,infant)
 
 
 
 list1 = spiders.GetPrices()
 list2 = spiders.GetDepartureTime()
 list3 = spiders.GetDurationTime()
-list4 = spiders.GetDurationType()
+list4 = spiders.GetStops()
 list5 = spiders.GetArrivalTime()
 list6 = spiders.GetRoute()
 list7 = spiders.GetVendor()
 for i in range(0,spiders.GetLength()):
-    print('\n' + str(i) + '.\nPrice: ' + list1[i])
-    print('\n' + '\nVendor:\n' + list7[i])
-    print('\n' + '\nDeparture Time:\n' + list2[i])
-    print('\n' + '\nArrival Time:\n' + list5[i])
-    print('\n' + '\nDuration:\n' + list3[i])
-    print('\n' + '\nJourney type :\n' + list4[i])
-    print('\n' + '\nRoute:\n' + list6[i])
+    print(str(i+1) + '.\nPrice: ' + list1[i])
+    print('Vendor: ' + list7[i])
+    print('Departure Time: ' + list2[i])
+    print('Arrival Time: ' + list5[i])
+    print('Duration: ' + list3[i])
+    print('Number of Stops: ' + list4[i])
+    print('Route: ' + list6[i])
 
 
 
