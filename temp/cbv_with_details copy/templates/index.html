@@ -5,8 +5,9 @@
     <div class="loader">
     </div>
     <div class="content">
-    {% for item in livestatus %}
         <table>
+    {% for item in livestatus %}
+
         <tr>
             <td>{{ item.no }}</td>
             <td>{{ item.station.name }}</td>
@@ -14,16 +15,16 @@
             <td>{{ item.actarr }}</td>
         `   <td>{{ item.actdep }}</td>
         </tr>
-        </table>
 
     {% endfor %}
+        </table>
     </div>
     
     <script>
     $(function () {
         $(".loader").fadeOut(2000,function () {
             $(".content").fadeIn(1000);
-            
+
         });
     });
     </script>
