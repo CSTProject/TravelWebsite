@@ -1,0 +1,30 @@
+{% block body_block %}
+    <h1>This is the index page we are seeing Template View</h1>
+    <h3>injected Content:</h3>
+    {{ injectme }}
+    <div class="loader">
+    </div>
+    <div class="content">
+    {% for item in livestatus %}
+        <table>
+        <tr>
+            <td>{{ item.no }}</td>
+            <td>{{ item.station.name }}</td>
+            <td>{{ item.station.code }}</td>
+            <td>{{ item.actarr }}</td>
+        `   <td>{{ item.actdep }}</td>
+        </tr>
+        </table>
+
+    {% endfor %}
+    </div>
+    
+    <script>
+    $(function () {
+        $(".loader").fadeOut(2000,function () {
+            $(".content").fadeIn(1000);
+            
+        });
+    });
+    </script>
+{% endblock %}
