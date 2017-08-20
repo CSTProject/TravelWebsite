@@ -80,7 +80,7 @@ class Spider():
             data.append(table.text)
         return self.FixData(data,self.GetLength())
     def GetDictionary(self):
-        dict = {}
+        dict = {'Serial':[],'Prices':[],'DepartTime':[],'Time':[],'Stops':[],'ArrivalTime':[],'Route':[],'Vendor':[]}
         list1 = self.GetPrices()
         list2 = self.GetDepartureTime()
         list3 = self.GetDurationTime()
@@ -89,7 +89,15 @@ class Spider():
         list6 = self.GetRoute()
         list7 = self.GetVendor()
         for position in range(0,self.GetLength()):
-            dict[position+1] = [list1[position],list2[position],list3[position],list4[position],list5[position],list6[position],list7[position]]
+            dict['Serial'].append(str(position))
+            dict['Prices'].append(list1[position])
+            dict['DepartTime'].append(list2[position])
+            dict['Time'].append(list3[position])
+            dict['Stops'].append(list4[position])
+            dict['ArrivalTime'].append(list5[position])
+            dict['Route'].append(list6[position])
+            dict['Vendor'].append(list7[position])
+            print("Gotta restart now! :( ")
         return dict
 
 
@@ -130,5 +138,6 @@ for i in range(0,spiders.GetLength()):
     print('Route: ' + list6[i])
 
 print(spiders.GetDictionary())
+
 
 '''

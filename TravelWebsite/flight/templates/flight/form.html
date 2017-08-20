@@ -3,22 +3,19 @@
 {% block content %}
  <div id="flight-form">
 		<h1>Flight Search</h1>
-            <form method="POST" action="" id="flight" onsubmit = "document.getElementById('result').style.visibility = 'visible';">
+            <form method="GET" action="result/" id="flight" >
                 {% csrf_token %}
-				{{ form }}
-                <!--<label for="your_name">FROM: </label>
-<input id="origin" type="text" name="origin" maxlength="4" required />
-
-                TO:<input type="text" name="to-flight">
-                DEPART:<input type="date" name="to-flight">
-                RETURN:<input type="date" name="to-flight">
-                PASSENGERS:<input type="number" name="to-flight"> -->
-                <input type="submit" value="Submit">
+				
+                 FROM:<input type="text" name="origin" id = "origin" required>
+                 TO:<input type="text" name="dest" id = "dest" required>
+                DATE:<input type="text" name="date" id = "date" required>
+                 Adults:<input type="text" name="adults" id = "adults" required>
+                 Childs:<input type="text" name="childs" id = "childs" required>
+				  Infants:<input type="text" name="infants" id = "infants" required>
+                 <input type="submit" ></input>
+             
             </form>
  </div>
-<div id="result" >
-		UPDATE THIS CODE TO DISPLAY THE DICTIONARY
-
- </div>
- 
+{% block result %}
+{% endblock %}
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "flight/form.html" %}
+
+{% block result %}
+ <div id="result">
+		<table border = "2">
+		<tr>
+		{% for a in Prices %}	
+			<td>{{a}}</td>	
+		{% endfor %}	
+		{% for b in DepartTime %}
+			<td>{{b}}</td>
+		{% endfor %}
+		{% for c in Time %}
+			<td>{{c}}</td>
+		{% endfor %}
+		{% for d in Stops %}
+			<td>{{d}}</td>
+		{% endfor %}
+		{% for e in ArrivalTime %}
+			<td>{{e}}</td>
+		{% endfor %}
+		{% for f in Route %}
+			<td>{{f}}</td>
+		{% endfor %}
+		{% for g in Vendor %}
+			<td>{{g}}</td>
+		{% endfor %}
+							
+		</tr>
+		</table>
+ </div> 
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "flight/form.html" %}
+
+{% block result %}
+{% load index %}
+ <div id="result">
+		<table >
+		<tr>
+		<th>Serial Number</th>
+			<th>Price</th>
+			<th>Departure Time</th>
+			<th>Time of Flight</th>
+			<th>Number of Stops</th>
+			<th>Arrival Time</th>
+			<th>Route</th>
+			<th>Vendor</th>
+		</tr>
+		{% for x in Serial %}
+			<tr>
+			<td>{{x}}</td>	
+			<td>{{Prices|index:x}}</td>
+			<td>{{DepartTime|index:x}}</td>
+			<td>{{Time|index:x}}</td>
+			<td>{{Stops|index:x}}</td>
+			<td>{{ArrivalTime|index:x}}</td>
+			<td>{{Route|index:x}}</td>
+			<td>{{Vendor|index:x}}</td>
+			</tr>
+		{% endfor %}
+		</table>
+ </div> 
+{% endblock %}

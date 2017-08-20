@@ -19,6 +19,6 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.flightform, name='flightform'),
-	
+    url(r'^$', views.flightresult, name='flightresult'),
+	url(r'^result/', views.flightresultdata, name='flightresult'),
 ]
