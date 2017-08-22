@@ -16,8 +16,8 @@ def flightresultdata(request):
     infants = request.GET.get('infants')
     flight = Spider(origin,destination,date,adults,childs,infants)
     passthis = flight.GetDictionary()
+    
     '''
-    DUMMY DATA FOR TESTING
     passthis ={'Time': ['1h 5m', '55m', '1h 5m', '1h 5m', '1h 10m', '1h', '1h 15m', '1h 15m', '1h 10m', '1h 10m', '1h 15m',
               '1h 5m', '1h 10m', '25h 50m', '17h 35m', '10h', '8h 35m', '11h 30m', '21h 15m', '6h 35m', '26h 45m',
               '9h 35m', '25h 10m', '29h 30m', '21h 20m', '26h 55m'],

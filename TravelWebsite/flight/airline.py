@@ -1,25 +1,15 @@
-import sys
-from PyQt4.QtGui import QApplication
-from PyQt4.QtCore import QUrl
-from PyQt4.QtWebKit import QWebPage
+import dryscrape
 from bs4 import BeautifulSoup
-
-class Client(QWebPage):
-    def __init__(self, url):
-        self.app = QApplication(sys.argv)
-        QWebPage.__init__(self)
-        self.loadFinished.connect(self.on_page_load)
-        self.mainFrame().load(QUrl(url))
-        self.app.exec_()
-
-    def on_page_load(self):
-        self.app.quit()
 
 class Spider():
     def __init__(self, origin, destination, date, adults, childs, infants):
         url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination + '&depart_date=' + date + '&adults=' + adults + '&childs=' + childs + '&infants=' + infants + '&sortType0=price&sortOrder0=sortAsc&page=loaded'
-        client_response = Client(url)
-        self.source = client_response.mainFrame().toHtml()
+        dryscrape.start_xvfb()
+        session = dryscrape.Session()
+        session.visit(url)
+        response = session.body()
+        self.source = response
+        print("GOT DATA,STARTING SCRAPING")
 
     def GetLength(self):
         soup = BeautifulSoup(self.source, "lxml")
@@ -97,7 +87,7 @@ class Spider():
             dict['ArrivalTime'].append(list5[position])
             dict['Route'].append(list6[position])
             dict['Vendor'].append(list7[position])
-            print("Gotta restart now! :( ")
+
         return dict
 
 
