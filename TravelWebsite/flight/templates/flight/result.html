@@ -16,7 +16,7 @@
 		</tr>
 		{% for x in Serial %}
 			<tr>
-			<td>{{x}}</td>	
+			<td>{{x|add:1}}</td>	
 			<td>{{Prices|index:x}}</td>
 			<td>{{DepartTime|index:x}}</td>
 			<td>{{Time|index:x}}</td>

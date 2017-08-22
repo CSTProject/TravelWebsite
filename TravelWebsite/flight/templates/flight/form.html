@@ -3,7 +3,7 @@
 {% block content %}
  <div id="flight-form">
 		<h1>Flight Search</h1>
-            <form method="GET" action="result/" id="flight" >
+            <form method="GET" action=" {{ request.build_absolute_uri }}result/" id="flight" >
                 {% csrf_token %}
 				
                  FROM:<input type="text" name="origin" id = "origin" required>

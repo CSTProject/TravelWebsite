@@ -4,17 +4,22 @@ from bs4 import BeautifulSoup
 class Spider():
     def __init__(self, origin, destination, date, adults, childs, infants):
         url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination + '&depart_date=' + date + '&adults=' + adults + '&childs=' + childs + '&infants=' + infants + '&sortType0=price&sortOrder0=sortAsc&page=loaded'
-        dryscrape.start_xvfb()
-        session = dryscrape.Session()
-        session.visit(url)
-        response = session.body()
-        self.source = response
-        print("GOT DATA,STARTING SCRAPING")
+        try:
+            dryscrape.start_xvfb()
+            session = dryscrape.Session()
+            session.visit(url)
+            response = session.body()
+            self.source = response
+            print("GOT DATA,STARTING SCRAPING\n\n")
+            print(response + "\n\n")
+        except:
+            print("WARNING : CHECK INTERNET CONNECTION, CAN'T GET DATA FROM THE INTERNET")
+            self.source = ''
 
     def GetLength(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
-        for table in soup.findAll('th', {'class': 'price'}):
+        for table in soup.findAll('th', {'id': 'BaggageBundlingTemplate'}):
             data.append(table.text)
         return len(data)
 
@@ -29,7 +34,7 @@ class Spider():
     def GetPrices(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
-        for table in soup.findAll('th', {'class':'price'}):
+        for table in soup.findAll('th', {'id': 'BaggageBundlingTemplate'}):
             data.append(table.text )
         return self.FixData(data,self.GetLength())
 
@@ -66,8 +71,16 @@ class Spider():
     def GetVendor(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
-        for table in soup.findAll('th', {'class':'vendor'}):
-            data.append(table.text)
+        for table in soup.findAll(['th','td'], {'class':['vendor','vendor  count1']}):
+            if (table.text != ''):
+                data.append(table.text)
+            else:
+                for image in soup.findAll("img"):
+                    try:
+                        data.append(image.get('alt', ''))
+                    except:
+                        data.append(table.text)
+
         return self.FixData(data,self.GetLength())
     def GetDictionary(self):
         dict = {'Serial':[],'Prices':[],'DepartTime':[],'Time':[],'Stops':[],'ArrivalTime':[],'Route':[],'Vendor':[]}
