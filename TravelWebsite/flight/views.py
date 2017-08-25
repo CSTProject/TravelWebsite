@@ -1,12 +1,10 @@
 from django.shortcuts import render
-from .forms import FForm
 from .airline import Spider
 # Create your views here.
 
 def flightresult(request):
-    form = FForm(request.GET)
-
     return render(request, 'flight/form.html')
+	
 def flightresultdata(request):
     origin = request.GET.get('origin')
     adults = request.GET.get('adults')
