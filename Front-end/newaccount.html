@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<title>
+				NEW ACCOUNT
+		</title>
+		<style>
+			body {
+				background-image: url("https://static.pexels.com/photos/59519/pexels-photo-59519.jpeg");
+				background-repeat:no-repeat;
+				background-size:cover; 
+			}
+			#newform{
+				border-color: black;
+				border-radius: 20px;
+				opacity: 0.8;
+				background-color: white;
+				padding: 100px;
+				margin: 0px 485px 0px 485px;
+				text-align: left;	
+			}
+			td{
+				float: left;
+			}
+			.button{
+				padding: 10px;
+				align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="newform">
+		<table>
+			<caption>
+			<h3>
+				NEW ACCOUNT
+			</h3>
+			</caption>
+			<tr>
+				<td>
+				First Name: <input type="text" id="fname" name="fname" width="25" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Last Name: <input type="text" id="lname" name="lname" width="25" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Phone Number: <input type="number" id="number" name="number" width="25" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Email ID: <input type="text" id="mail" name="mail" width="40" required>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Address: <textarea></textarea>
+				</td>
+			</tr>	
+			<tr>
+				<td class="button">
+				<input type="reset" name="reset" id="reset" value="Reset">
+				</td>
+				<td class="button">
+				<input type="button" value="Submit" name="submit" id="submit">	
+				</td>
+			</tr>
+		</div>
+	</body>
+</html>
