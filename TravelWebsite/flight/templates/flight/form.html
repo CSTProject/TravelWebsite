@@ -1,9 +1,11 @@
 {% extends "index/header.html" %}
 
 {% block content %}
+{% load ipaddress %}
  <div id="flight-form">
 		<h1>Flight Search</h1>
-            <form method="GET" action=" {{ request.build_absolute_uri }}result/" id="flight" >
+            <h2>One Way Trip</h2>
+            <form method="GET" action="{{ip}}/flights/result_oneway/" id="oneway" >
                 {% csrf_token %}
 				
                  FROM:<input type="text" name="origin" id = "origin" required>
@@ -15,6 +17,20 @@
                  <input type="submit" ></input>
              
             </form>
+             <h2>Round Trip</h2>
+             <form method="GET" action="{{ip}}/flights/result_roundtrip/" id="roundtrip" >
+                 {% csrf_token %}
+
+                 FROM:<input type="text" name="origin" id = "origin" required>
+                 TO:<input type="text" name="dest" id = "dest" required>
+                 DEPART DATE:<input type="text" name="date1" id = "date1" required>
+                 RETURN DATE:<input type="text" name="date2" id = "date2" required>
+                 Adults:<input type="text" name="adults" id = "adults" required>
+                 Childs:<input type="text" name="childs" id = "childs" required>
+                 Infants:<input type="text" name="infants" id = "infants" required>
+                 <input type="submit" ></input>
+
+             </form>
  </div>
 {% block result %}
 {% endblock %}

@@ -1,21 +1,27 @@
 import dryscrape
 from bs4 import BeautifulSoup
+import multiprocessing
+import time
+import threading
 
-class Spider():
+class GetData():
     def __init__(self, origin, destination, date, adults, childs, infants):
-        url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination + '&depart_date=' + date + '&adults=' + adults + '&childs=' + childs + '&infants=' + infants + '&sortType0=price&sortOrder0=sortAsc&page=loaded'
+        self.url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination + '&depart_date=' + date + '&adults=' + adults + '&childs=' + childs + '&infants=' + infants + '&sortType0=price&sortOrder0=sortAsc&page=loaded'
         self.loss = 0  # Number of indices removed during fixing dictionary
         self.losspercent = 0
+    def GetSource(self):
         try:
-            dryscrape.start_xvfb()
+            print("Don't forget to export DISPLAY if using bash for windows")
+            #dryscrape.start_xvfb()
             session = dryscrape.Session()
-            session.visit(url)
+            session.visit(self.url)
             response = session.body()
             self.source = response
             print("\nGOT DATA,STARTING SCRAPING\n")
             #print(response + "\n\n")
         except:
             print("\nWARNING : CHECK INTERNET CONNECTION, CAN'T GET DATA FROM THE INTERNET\n")
+            print("\nDid you forget export DISPLAY=:0\n")
             self.source = ''
 
     def GetLength(self):
@@ -91,7 +97,7 @@ class Spider():
 
 
 
-    def GetDictionary(self):
+    def GetDictionary(self,q):
         dict = {'Serial':[],'Prices':[],'DepartTime':[],'Time':[],'Stops':[],'ArrivalTime':[],'Route':[],'Vendor':[]}
         list1 = self.GetPrices()
         list2 = self.GetDepartureTime()
@@ -110,7 +116,7 @@ class Spider():
             dict['Route'].append(list6[position])
             dict['Vendor'].append(list7[position])
 
-        return self.FixDict(dict)
+        q.put(self.FixDict(dict))
 
     ''' FixData()
         Removes Entries from lists of the dictionary at a particular index,
@@ -152,7 +158,10 @@ class Spider():
 
         print('Lost ' + str(self.loss) + ' Entry(s).\n')
         t = str(100 - self.losspercent)
-        print('Scraping Accuracy : ' + t[0] + t[1] + t[2] + t[3] + t[4] + '%\n')
+        try:
+            print('Scraping Accuracy : ' + t[0] + t[1] + t[2] + t[3] + t[4] + '%\n')
+        except:
+            print('GOT NO DATA TO SCRAPE ON\n')
 
         return dictionary
 
@@ -169,19 +178,86 @@ class Spider():
             del dict['Vendor'][positions[i]-i]
             del dict['Serial'][positions[i]-i]
             del dict['Stops'][positions[i]-i]
-
         self.loss = len(positions)
-        self.losspercent = (self.loss/(self.GetLength() + self.loss)) * 100
+        try:
+            self.losspercent = (self.loss/(self.GetLength() + self.loss)) * 100
+        except:
+            self.losspercent = 100
         return dict
 
+class OneWay():
+    def GetDictionary(self, origin, destination, departdate, adults, childs, infants):
+        first = GetData(origin, destination, departdate, adults, childs, infants)
+        t = threading.Thread(target=first.GetSource, args=())
+        t.start()
+        t.join()
+        q = multiprocessing.Queue()
+        p = multiprocessing.Process(target=first.GetDictionary, args=(q,))
+        p.start()
+        p.join()
 
-'''CODE BELOW ONLY FOR DEBUGGING AND TESTING
+        if q.empty() is False:
+            return q.get()
+
+class RoundTrip():
+    def GetDictionary(self, origin, destination, departdate, returndate, adults, childs, infants):
+        data = {'Serial': [], 'Prices': [], 'DepartTime': [], 'Time': [], 'Stops': [], 'ArrivalTime': [], 'Route': [],
+                'Vendor': []}
+        first = GetData(origin, destination, departdate, adults, childs, infants)
+        second = GetData(destination, origin, returndate, adults, childs, infants)
+        t1 = threading.Thread(target=first.GetSource, args=())
+        t2 = threading.Thread(target=second.GetSource, args=())
+        t1.start()
+        t2.start()
+        t1.join()
+        t2.join()
+        q1 = multiprocessing.Queue()
+        q2 = multiprocessing.Queue()
+        p1 = multiprocessing.Process(target=first.GetDictionary, args=(q1,))
+        p2 = multiprocessing.Process(target=second.GetDictionary, args=(q2,))
+        p1.start()
+        p2.start()
+
+        while q1.empty() and q2.empty():
+            time.sleep(1)
+            print('Waiting for scraping to finish')
+        one = q1.get()
+        two = q2.get()
+        data['Serial'].append(one['Serial'])
+        data['Prices'].append(one['Prices'])
+        data['DepartTime'].append(one['DepartTime'])
+        data['Time'].append(one['Time'])
+        data['Stops'].append(one['Stops'])
+        data['ArrivalTime'].append(one['ArrivalTime'])
+        data['Route'].append(one['Route'])
+        data['Vendor'].append(one['Vendor'])
+
+        data['Serial'].append(two['Serial'])
+        data['Prices'].append(two['Prices'])
+        data['DepartTime'].append(two['DepartTime'])
+        data['Time'].append(two['Time'])
+        data['Stops'].append(two['Stops'])
+        data['ArrivalTime'].append(two['ArrivalTime'])
+        data['Route'].append(two['Route'])
+        data['Vendor'].append(two['Vendor'])
+
+        #print(data)
+        p1.terminate()
+        p2.terminate()
+        return data
+
+
+
+'''
+CODE BELOW ONLY FOR DEBUGGING AND TESTING
 print("Enter Start Location")
 start = input()
 print("Enter Stop Location")
 end = input()
-print("Enter Date in format dd/mm/yyyy")
-date = input()
+print("Enter Date1 in format dd/mm/yyyy")
+date1 = input()
+print("Enter Date2 in format dd/mm/yyyy")
+date2 = input()
 print("Enter Adults")
 adults = input()
 print("Enter Childs")
@@ -189,6 +265,11 @@ child = input()
 print("Enter Infants")
 infant = input()
 print("Processing...")
-spiders = Spider(start,end,date,adults,child,infant)
-print(spiders.GetDictionary())
+oneway = OneWay()
+roundtrip = RoundTrip()
+print('ONE WAY TRIP\n\n')
+print(oneway.GetDictionary(start,end,date1,adults,child,infant))
+print('ROUND TRIP\n\n')
+print(roundtrip.GetDictionary(start,end,date1,date2,adults,child,infant))
+
 '''
