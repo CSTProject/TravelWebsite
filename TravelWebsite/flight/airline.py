@@ -9,10 +9,12 @@ class GetData():
         self.url = 'https://www.cleartrip.com/flights/results?from=' + origin + '&to=' + destination + '&depart_date=' + date + '&adults=' + adults + '&childs=' + childs + '&infants=' + infants + '&sortType0=price&sortOrder0=sortAsc&page=loaded'
         self.loss = 0  # Number of indices removed during fixing dictionary
         self.losspercent = 0
+        self.length = 0
+        self.source = ''
     def GetSource(self):
         try:
             print("Don't forget to export DISPLAY if using bash for windows")
-            #dryscrape.start_xvfb()
+            dryscrape.start_xvfb()
             session = dryscrape.Session()
             session.visit(self.url)
             response = session.body()
@@ -22,18 +24,25 @@ class GetData():
         except:
             print("\nWARNING : CHECK INTERNET CONNECTION, CAN'T GET DATA FROM THE INTERNET\n")
             print("\nDid you forget export DISPLAY=:0\n")
-            self.source = ''
 
     def GetLength(self):
+        if self.length != 0:
+            #self.UpdateLength()
+            return self.length
+        else:
+            self.UpdateLength()
+            return self.length
+
+    def UpdateLength(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'id': 'BaggageBundlingTemplate'}):
             data.append(table.text)
-        return len(data) - self.loss
+        self.length = len(data) - self.loss
 
     # Removes extra spaces from scraped data
-    def FixData(self, fixthis, length):
-        for i in range(0,length):
+    def FixData(self, fixthis):
+        for i in range(0,self.GetLength()):
             fixthis[i] = fixthis[i].replace("\n","")
             fixthis[i] = " ".join(fixthis[i].split())
             fixthis[i] = fixthis[i].strip()
@@ -45,38 +54,38 @@ class GetData():
         data = []
         for table in soup.findAll('th', {'id': 'BaggageBundlingTemplate'}):
             data.append(table.text )
-        return self.FixData(data,self.GetLength())
+        return self.FixData(data)
 
     def GetDepartureTime(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'depart'}):
             data.append(table.text)
-        return self.FixData(data,self.GetLength())
+        return self.FixData(data)
     def GetArrivalTime(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'arrive'}):
             data.append(table.text)
-        return self.FixData(data,self.GetLength())
+        return self.FixData(data)
     def GetDurationTime(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('th', {'class':'duration'}):
             data.append(table.text)
-        return self.FixData(data,self.GetLength())
+        return self.FixData(data)
     def GetStops(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('td', {'class':'duration'}):
             data.append(table.text)
-        return self.FixData(data,self.GetLength())
+        return self.FixData(data)
     def GetRoute(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
         for table in soup.findAll('td', {'class':'route'}):
             data.append(table.text)
-        return self.FixData(data,self.GetLength())
+        return self.FixData(data)
     def GetVendor(self):
         soup = BeautifulSoup(self.source, "lxml")
         data = []
@@ -92,12 +101,12 @@ class GetData():
                     else:
                         data.append(table.text)
 
-        return self.FixData(data, self.GetLength())
+        return self.FixData(data)
 
 
 
 
-    def GetDictionary(self,q):
+    def GetDictionary(self,q,string):
         dict = {'Serial':[],'Prices':[],'DepartTime':[],'Time':[],'Stops':[],'ArrivalTime':[],'Route':[],'Vendor':[]}
         list1 = self.GetPrices()
         list2 = self.GetDepartureTime()
@@ -116,7 +125,7 @@ class GetData():
             dict['Route'].append(list6[position])
             dict['Vendor'].append(list7[position])
 
-        q.put(self.FixDict(dict))
+        q.put(self.FixDict(dict,string))
 
     ''' FixData()
         Removes Entries from lists of the dictionary at a particular index,
@@ -124,8 +133,8 @@ class GetData():
         Basically it validates the data and checks the accuracy of the scraping algorithm.
     '''
 
-    def FixDict(self, dictionary):
-
+    def FixDict(self, dictionary,string):
+        temp = ''
         positions = []  # positions(indices) where the list values will be deleted
         for position in range(0,self.GetLength()):
             items = [
@@ -149,20 +158,20 @@ class GetData():
         dictionary = self.DeleteEntry(positions, dictionary)
 
         #  Regenerate the messed up serial numbers due to deleting of values
-        #  REQUIRED FOR DATA TO CORRECTLY SHOW UP ON THE PAGE (See jinja code on result.html)
+        #  REQUIRED FOR DATA TO CORRECTLY SHOW UP ON THE PAGE (See jinja code on result_*.html)
         for x in range(0,self.GetLength()):  # DELETE all entries on 'Serial' key
             del dictionary['Serial'][0]
 
         for pos in range(0,self.GetLength()):  # Create fresh ordered entries for 'Serial'
             dictionary['Serial'].append(str(pos))
 
-        print('Lost ' + str(self.loss) + ' Entry(s).\n')
+        temp += 'Lost ' + str(self.loss) + ' Entry(s).\n'
         t = str(100 - self.losspercent)
         try:
-            print('Scraping Accuracy : ' + t[0] + t[1] + t[2] + t[3] + t[4] + '%\n')
+            temp += 'Scraping Accuracy : ' + t[0] + t[1] + t[2] + t[3] + t[4] + '%\n'
         except:
-            print('GOT NO DATA TO SCRAPE ON\n')
-
+            temp += 'GOT NO DATA TO SCRAPE ON\n'
+        string.put(temp)
         return dictionary
 
 
@@ -179,6 +188,7 @@ class GetData():
             del dict['Serial'][positions[i]-i]
             del dict['Stops'][positions[i]-i]
         self.loss = len(positions)
+        self.UpdateLength()
         try:
             self.losspercent = (self.loss/(self.GetLength() + self.loss)) * 100
         except:
@@ -192,12 +202,20 @@ class OneWay():
         t.start()
         t.join()
         q = multiprocessing.Queue()
-        p = multiprocessing.Process(target=first.GetDictionary, args=(q,))
+        string = multiprocessing.Queue()
+        p = multiprocessing.Process(target=first.GetDictionary, args=(q,string,))
         p.start()
-        p.join()
+        t = time.time()
+        while q.empty():
+            pass
 
-        if q.empty() is False:
-            return q.get()
+        tnew = time.time() - t
+        print('\nScraping took ' + str(tnew)[0] + str(tnew)[1] + str(tnew)[2] + str(tnew)[3] + ' seconds\n')
+        print('\n' + string.get())
+
+        p.terminate()
+
+        return q.get()
 
 class RoundTrip():
     def GetDictionary(self, origin, destination, departdate, returndate, adults, childs, infants):
@@ -207,22 +225,32 @@ class RoundTrip():
         second = GetData(destination, origin, returndate, adults, childs, infants)
         t1 = threading.Thread(target=first.GetSource, args=())
         t2 = threading.Thread(target=second.GetSource, args=())
+
         t1.start()
         t2.start()
         t1.join()
         t2.join()
-        q1 = multiprocessing.Queue()
-        q2 = multiprocessing.Queue()
-        p1 = multiprocessing.Process(target=first.GetDictionary, args=(q1,))
-        p2 = multiprocessing.Process(target=second.GetDictionary, args=(q2,))
+
+        data1 = multiprocessing.Queue()
+        data2 = multiprocessing.Queue()
+        string1 = multiprocessing.Queue()
+        string2 = multiprocessing.Queue()
+
+        p1 = multiprocessing.Process(target=first.GetDictionary, args=(data1,string1,))
+        p2 = multiprocessing.Process(target=second.GetDictionary, args=(data2,string2,))
         p1.start()
         p2.start()
 
-        while q1.empty() and q2.empty():
-            time.sleep(1)
-            print('Waiting for scraping to finish')
-        one = q1.get()
-        two = q2.get()
+        t = time.time()
+        while data1.empty() and data2.empty():
+            pass
+        tnew = time.time() - t
+        print('\nScraping took ' + str(tnew)[0] + str(tnew)[1] + str(tnew)[2] + str(tnew)[3] + ' seconds\n')
+        print('\n' + string1.get() + '\n' + string2.get() + '\n')
+
+        one = data1.get()
+        two = data2.get()
+
         data['Serial'].append(one['Serial'])
         data['Prices'].append(one['Prices'])
         data['DepartTime'].append(one['DepartTime'])
@@ -241,9 +269,10 @@ class RoundTrip():
         data['Route'].append(two['Route'])
         data['Vendor'].append(two['Vendor'])
 
-        #print(data)
+        print(data)
         p1.terminate()
         p2.terminate()
+
         return data
 
 
