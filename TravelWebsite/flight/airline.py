@@ -14,13 +14,13 @@ class GetData():
     def GetSource(self):
         try:
             print("Don't forget to export DISPLAY if using bash for windows")
-            dryscrape.start_xvfb()
+            #dryscrape.start_xvfb()
             session = dryscrape.Session()
             session.visit(self.url)
             response = session.body()
             self.source = response
             print("\nGOT DATA,STARTING SCRAPING\n")
-            #print(response + "\n\n")
+            print(response + "\n\n")
         except:
             print("\nWARNING : CHECK INTERNET CONNECTION, CAN'T GET DATA FROM THE INTERNET\n")
             print("\nDid you forget export DISPLAY=:0\n")
