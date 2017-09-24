@@ -14,13 +14,13 @@ class GetData():
     def GetSource(self):
         try:
             print("Don't forget to export DISPLAY if using bash for windows")
-            #dryscrape.start_xvfb()
+            dryscrape.start_xvfb()
             session = dryscrape.Session()
             session.visit(self.url)
             response = session.body()
             self.source = response
             print("\nGOT DATA,STARTING SCRAPING\n")
-            print(response + "\n\n")
+            #print(response + "\n\n")
         except:
             print("\nWARNING : CHECK INTERNET CONNECTION, CAN'T GET DATA FROM THE INTERNET\n")
             print("\nDid you forget export DISPLAY=:0\n")
@@ -171,6 +171,7 @@ class GetData():
             temp += 'Scraping Accuracy : ' + t[0] + t[1] + t[2] + t[3] + t[4] + '%\n'
         except:
             temp += 'GOT NO DATA TO SCRAPE ON\n'
+            print(self.source)
         string.put(temp)
         return dictionary
 
@@ -198,9 +199,8 @@ class GetData():
 class OneWay():
     def GetDictionary(self, origin, destination, departdate, adults, childs, infants):
         first = GetData(origin, destination, departdate, adults, childs, infants)
-        t = threading.Thread(target=first.GetSource, args=())
-        t.start()
-        t.join()
+        first.GetSource()
+
         q = multiprocessing.Queue()
         string = multiprocessing.Queue()
         p = multiprocessing.Process(target=first.GetDictionary, args=(q,string,))
@@ -223,13 +223,9 @@ class RoundTrip():
                 'Vendor': []}
         first = GetData(origin, destination, departdate, adults, childs, infants)
         second = GetData(destination, origin, returndate, adults, childs, infants)
-        t1 = threading.Thread(target=first.GetSource, args=())
-        t2 = threading.Thread(target=second.GetSource, args=())
+        first.GetSource()
+        second.GetSource()
 
-        t1.start()
-        t2.start()
-        t1.join()
-        t2.join()
 
         data1 = multiprocessing.Queue()
         data2 = multiprocessing.Queue()
