@@ -10,8 +10,7 @@ class LiveTrain():
     
     def get_live_status(self):
         req = requests.get('http://api.railwayapi.com/v2/live/train/{}/date/{}/apikey/{}/'.format(self.train_no,self.date,api_key))
-        data = req.json()
-		#hello
+        data = req.json()		
         return data
     
     
