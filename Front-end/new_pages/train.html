@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        CST PROJECT WEBSITE
+    </title>
+</head>
+<style>
+    body {
+        background-image: url("train.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+        height: auto;
+    }
+    div{
+        border-radius: 20px;
+    }
+    #train-form {
+        height: 200px;
+        background-color: white;
+        margin: 10px 10px 10px 10px;
+        padding: 10px 10px 10px 10px;
+        opacity: 0.8;
+    }
+    #offers{
+        height: 250px;
+        width: 1110px;
+        background-color: white;
+        margin: 10px 10px 10px 10px;
+        padding: 10px;
+        opacity: 0.6;
+    }
+    .adds{
+        background-color: rgba(200,200,200,0.5);
+        margin: 5px 5px 5px 5px;
+        float: left;
+        width: auto;
+        height: auto;
+    }
+    .adds:hover{
+        background-color: rgba(200,200,200,1.0);
+    }
+    .add-text{
+        height: 100px;
+        width: 360px;
+    }
+    .offer-img{
+        width: 350px;
+        height: 130px;
+    }
+    .add-img{
+        width:360px;
+        height: 140px;
+    }
+    #train {
+        padding: 10px 10px 10px 10px;
+    }
+    #navigation-bar {
+        margin: 10px 10px 10px 10px;
+        background-color: rgba(0,0,0,0.2);
+        color: white;
+    }
+    .input {
+        display: inline-flex;
+        margin: 30px 10px 10px 10px;
+        padding: 10px 10px 10px 10px;
+        width: 10%;
+        box-sizing: border-box;
+    }
+    h1 {
+        font-family: 'Segoe UI';
+        color: grey;
+        padding: 10px 10px 10px 10px;
+    }
+    button {
+        background-color: grey;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0px 0px 0px 0px;
+        padding: 0;
+        overflow: hidden;
+    }
+    li a {
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: 'Segoe UI';
+    }
+    .a{
+        color: white;
+    }
+    .a:hover{
+        color: black;
+    }
+    .nav-list-left {
+        float: left;
+        color: white;
+        /*background-color: rgba(255,255,255,0.8);*/
+    }
+    .nav-list-left:hover{
+        background-color: white;
+        opacity: 0.8;
+        font-weight: bold;
+        font-size: large;
+    }
+    .nav-list-right {
+        float:right;
+        /*       background-color: rgba(255,255,255,0.8);*/
+    }
+    .nav-list-right:hover {
+        background-color: rgba(255,255,255,0.8);
+        font-weight: bold;
+        font-size: large;
+    }
+    #rm-btn{
+        margin: 0px 0px 0px 0px;
+        padding: 0px;
+        text-space: 0px;
+    }
+    .fbox {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    #login-sub-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: auto;
+    }
+
+    #login-sub-btn:hover {
+        opacity: 0.8;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        color: black;
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: white;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+    .modal-content:hover{
+        opacity: 1.0;
+    }
+
+    /* The Close Button (x) */
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+        -webkit-animation: animatezoom 1s;
+        animation: animatezoom 1s;
+    }
+
+    @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)}
+        to {-webkit-transform: scale(1)}
+    }
+
+    @keyframes animatezoom {
+        from {transform: scale(0)}
+        to {transform: scale(1)}
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: right;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+</style>
+<body>
+<div id="head">
+    <div id="navigation-bar">
+        <ul>
+            <li class="nav-list-left" id=""home-btn"><pre>   </pre></li>
+            <li class="nav-list-left" id="flight-btn"><a href="index.html" class="a" onmouseover="hover2()" onmouseout="no-hover2()" onclick="abc()">FLIGHTS</a></li>
+            <li class="nav-list-left" id="hotel-btn"><a href="hotel.html" class="a" onmouseover="hover3()" onmouseout="no-hover3()">HOTELS</a></li>
+            <li class="nav-list-left" id="train-btn"><a href="train.html" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
+            <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
+            <li></li>
+            <li class="nav-list-right" id="support"><a href="/support" class="a" onmouseover="hover6()" onmouseout="no-hover6()">SUPPORT</a></li>
+            <li class="nav-list-right" id="login">
+                <a onclick="document.getElementById('id01').style.display='block'" class="a" style="width:auto;">LOGIN</a>
+
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div id="body">
+    <div id="train-form">
+        <form method="POST" action="/action_page.php" id="train">
+            <h1>Railways Search</h1>
+            FROM:<input type="text" name="from-train" class="input" required>
+            TO:<input type="text" name="to-train" class="input" required>
+            DATE:<input type="date" name="to-train" class="input" required>
+            PASSENGERS:<input type="number" name="to-train" class="input" required>
+            <button type="submit" value="Submit">Submit</button>
+        </form>
+    </div>
+    <center>
+        <div id="offers">
+            <div class="adds" id="first-add">
+                <div class="add-text"></div>
+                <div class="add-img"><img src="1.jpg" class="offer-img"></div>
+            </div>
+            <div class="adds" id="second-add">
+                <div class="add-text"></div>
+                <div class="add-img"><img src="1.jpg" class="offer-img"></div>
+            </div>
+            <div class="adds" id="third-add">
+                <div class="add-text"></div>
+                <div class="add-img"><img src="1.jpg" class="offer-img"></div>
+            </div>
+        </div>
+    </center>
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="1.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" class="fbox" name="uname" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" class="fbox" name="psw" required>
+                <div id="rm" align="right">
+                    <input type="checkbox" checked="checked" id="rm-btn"> Remember me
+                </div>
+                <center>
+                    <button id="login-sub-btn" type="submit">Login</button>
+                </center>
+
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw"><a href="#">Forgot password?</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="extras">
+
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
