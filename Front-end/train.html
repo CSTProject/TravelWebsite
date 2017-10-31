@@ -1,21 +1,21 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>
-            CST PROJECT WEBSITE
-        </title>
-    </head>
-    <style>
+<head>
+    <title>
+        CST PROJECT WEBSITE
+    </title>
+</head>
+<style>
     body {
-        background-image: url("https://static.pexels.com/photos/59519/pexels-photo-59519.jpeg");
+        background-image: url("train.jpg");
         background-repeat:no-repeat;
-        background-size:cover; 
+        background-size:cover;
         height: auto;
     }
     div{
-	border-radius: 20px;    
+        border-radius: 20px;
     }
-    #flight-form {
+    #train-form {
         height: 200px;
         background-color: white;
         margin: 10px 10px 10px 10px;
@@ -52,7 +52,7 @@
         width:360px;
         height: 140px;
     }
-    #flight {
+    #train {
         padding: 10px 10px 10px 10px;
     }
     #navigation-bar {
@@ -116,7 +116,7 @@
     }
     .nav-list-right {
         float:right;
- /*       background-color: rgba(255,255,255,0.8);*/
+        /*       background-color: rgba(255,255,255,0.8);*/
     }
     .nav-list-right:hover {
         background-color: rgba(255,255,255,0.8);
@@ -249,39 +249,38 @@
             width: 100%;
         }
     }
-    </style>
-    <body>
-        <div id="head">
-            <div id="navigation-bar">
-            <ul>
-                <li class="nav-list-left" id=""home-btn"><pre>   </pre></li>
-                <li class="nav-list-left" id="flight-btn"><a href="index.html" class="a" onmouseover="hover2()" onmouseout="no-hover2()" onclick="abc()">FLIGHTS</a></li>
-                <li class="nav-list-left" id="hotel-btn"><a href="hotel.html" class="a" onmouseover="hover3()" onmouseout="no-hover3()">HOTELS</a></li>
-                <li class="nav-list-left" id="train-btn"><a href="train.html" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
-                <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
-                <li></li>
-                <li class="nav-list-right" id="support"><a href="/support" class="a" onmouseover="hover6()" onmouseout="no-hover6()">SUPPORT</a></li>
-                <li class="nav-list-right" id="login">
+</style>
+<body>
+<div id="head">
+    <div id="navigation-bar">
+        <ul>
+            <li class="nav-list-left" id=""home-btn"><pre>   </pre></li>
+            <li class="nav-list-left" id="flight-btn"><a href="index.html" class="a" onmouseover="hover2()" onmouseout="no-hover2()" onclick="abc()">FLIGHTS</a></li>
+            <li class="nav-list-left" id="hotel-btn"><a href="hotel.html" class="a" onmouseover="hover3()" onmouseout="no-hover3()">HOTELS</a></li>
+            <li class="nav-list-left" id="train-btn"><a href="train.html" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
+            <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
+            <li></li>
+            <li class="nav-list-right" id="support"><a href="/support" class="a" onmouseover="hover6()" onmouseout="no-hover6()">SUPPORT</a></li>
+            <li class="nav-list-right" id="login">
                 <a onclick="document.getElementById('id01').style.display='block'" class="a" style="width:auto;">LOGIN</a>
 
-                </li>
+            </li>
 
-            </ul>
-        </div>
-        </div>
-        <div id="body">
-        <div id="flight-form">
-            <form method="POST" action="/action_page.php" id="flight">
-                <h1>Flight Search</h1>
-                FROM:<input type="text" name="from-flight" class="input" required>
-                TO:<input type="text" name="to-flight" class="input" required>
-                DEPART:<input type="date" name="to-flight" class="input" required>
-                RETURN:<input type="date" name="to-flight" class="input" required>
-                PASSENGERS:<input type="number" name="to-flight" class="input" required>
-                <button type="submit" value="Submit">Submit</button>
-            </form>
-        </div>
-        <center>
+        </ul>
+    </div>
+</div>
+<div id="body">
+    <div id="train-form">
+        <form method="POST" action="/action_page.php" id="train">
+            <h1>Railways Search</h1>
+            FROM:<input type="text" name="from-train" class="input" required>
+            TO:<input type="text" name="to-train" class="input" required>
+            DATE:<input type="date" name="to-train" class="input" required>
+            PASSENGERS:<input type="number" name="to-train" class="input" required>
+            <button type="submit" value="Submit">Submit</button>
+        </form>
+    </div>
+    <center>
         <div id="offers">
             <div class="adds" id="first-add">
                 <div class="add-text"></div>
@@ -296,51 +295,51 @@
                 <div class="add-img"><img src="1.jpg" class="offer-img"></div>
             </div>
         </div>
-        </center>
-        <div id="id01" class="modal">
+    </center>
+    <div id="id01" class="modal">
 
-            <form class="modal-content animate" action="/action_page.php">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    <img src="1.jpg" alt="Avatar" class="avatar">
-                </div>
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="1.jpg" alt="Avatar" class="avatar">
+            </div>
 
-                <div class="container">
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" class="fbox" name="uname" required>
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" class="fbox" name="uname" required>
 
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" class="fbox" name="psw" required>
-                    <div id="rm" align="right">
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" class="fbox" name="psw" required>
+                <div id="rm" align="right">
                     <input type="checkbox" checked="checked" id="rm-btn"> Remember me
-                    </div>
-                    <center>
+                </div>
+                <center>
                     <button id="login-sub-btn" type="submit">Login</button>
-                    </center>
+                </center>
 
-                </div>
+            </div>
 
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw"><a href="#">Forgot password?</a></span>
-                </div>
-            </form>
-        </div>
-        </div>
-        <div id="extras">
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw"><a href="#">Forgot password?</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="extras">
 
-        </div>
-        <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
-    </body>
+</body>
 </html>
