@@ -1,0 +1,5 @@
+Pls install packages :
+requests
+django[bcrypt]
+django[argon2]
+Pillow
