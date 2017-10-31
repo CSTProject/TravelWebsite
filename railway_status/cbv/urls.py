@@ -11,6 +11,7 @@ Class-based views
     2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
+       url(r'^cbvapp/',include('cbvapp.urls', namespace='cbvapp')),
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
@@ -21,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.IndexView.as_view()),
     url(r'^data/', views.getData,name='data'),
-    url(r'^cbvapp/',include('cbvapp.urls', namespace='cbvapp')),
+ 
 
 ]
