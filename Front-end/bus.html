@@ -6,8 +6,13 @@
     </title>
 </head>
 <style>
+    #bus-gif{
+        height: 70px;
+        width: 100px;
+        margin: 20px 20px 20px 20px;
+    }
     body {
-        background-image: url("train.jpg");
+        background-image: url("bus1.jpg");
         background-repeat:no-repeat;
         background-size:cover;
         height: auto;
@@ -15,7 +20,7 @@
     div{
         border-radius: 20px;
     }
-    #train-form {
+    #bus-form {
         height: 200px;
         background-color: white;
         margin: 10px 10px 10px 10px;
@@ -52,7 +57,7 @@
         width:360px;
         height: 140px;
     }
-    #train {
+    #bus {
         padding: 10px 10px 10px 10px;
     }
     #navigation-bar {
@@ -106,7 +111,6 @@
     .nav-list-left {
         float: left;
         color: white;
-        /*background-color: rgba(255,255,255,0.8);*/
     }
     .nav-list-left:hover{
         background-color: white;
@@ -116,7 +120,6 @@
     }
     .nav-list-right {
         float:right;
-        /*       background-color: rgba(255,255,255,0.8);*/
     }
     .nav-list-right:hover {
         background-color: rgba(255,255,255,0.8);
@@ -136,8 +139,6 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
-
-    /* Set a style for all buttons */
     #login-sub-btn {
         background-color: #4CAF50;
         color: white;
@@ -151,15 +152,11 @@
     #login-sub-btn:hover {
         opacity: 0.8;
     }
-
-    /* Extra styles for the cancel button */
     .cancelbtn {
         width: auto;
         padding: 10px 18px;
         background-color: #f44336;
     }
-
-    /* Center the image and position the close button */
     .imgcontainer {
         text-align: center;
         margin: 24px 0 12px 0;
@@ -180,34 +177,29 @@
         float: right;
         padding-top: 16px;
     }
-
-    /* The Modal (background) */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        display: none;
+        position: fixed;
+        z-index: 1;
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.6);
         padding-top: 60px;
     }
 
-    /* Modal Content/Box */
     .modal-content {
         background-color: white;
-        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        margin: 5% auto 15% auto;
         border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
+        width: 80%;
     }
     .modal-content:hover{
         opacity: 1.0;
     }
-
-    /* The Close Button (x) */
     .close {
         position: absolute;
         right: 25px;
@@ -222,8 +214,6 @@
         color: red;
         cursor: pointer;
     }
-
-    /* Add Zoom Animation */
     .animate {
         -webkit-animation: animatezoom 1s;
         animation: animatezoom 1s;
@@ -258,7 +248,7 @@
             <li class="nav-list-left" id="flight-btn"><a href="index.html" class="a" onmouseover="hover2()" onmouseout="no-hover2()" onclick="abc()">FLIGHTS</a></li>
             <li class="nav-list-left" id="hotel-btn"><a href="hotel.html" class="a" onmouseover="hover3()" onmouseout="no-hover3()">HOTELS</a></li>
             <li class="nav-list-left" id="train-btn"><a href="train.html" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
-            <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
+            <li class="nav-list-left" id="bus-btn"><a href="bus.html" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
             <li></li>
             <li class="nav-list-right" id="support"><a href="/support" class="a" onmouseover="hover6()" onmouseout="no-hover6()">SUPPORT</a></li>
             <li class="nav-list-right" id="login">
@@ -270,13 +260,13 @@
     </div>
 </div>
 <div id="body">
-    <div id="train-form">
-        <form method="POST" action="/action_page.php" id="train">
-            <h1>Railways Search</h1>
-            FROM:<input type="text" name="from-train" class="input" required>
-            TO:<input type="text" name="to-train" class="input" required>
-            DATE:<input type="date" name="to-train" class="input" required>
-            PASSENGERS:<input type="number" name="to-train" class="input" required>
+    <div id="bus-form">
+        <form method="POST" action="/action_page.php" id="bus">
+            <h1>Flight Search</h1>
+            FROM:<input type="text" name="from-bus" class="input" required>
+            TO:<input type="text" name="to-bus" class="input" required>
+            DATE:<input type="date" name="to-bus" class="input" required>
+            PASSENGERS:<input type="number" name="to-bus" class="input" required>
             <button type="submit" value="Submit">Submit</button>
         </form>
     </div>
@@ -300,6 +290,9 @@
 
         <form class="modal-content animate" action="/action_page.php">
             <div class="imgcontainer">
+                <div id="form-logo" align="left">
+                    <img src="bus.gif" id="bus-gif" align="left">
+                </div>
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <img src="1.jpg" alt="Avatar" class="avatar">
             </div>

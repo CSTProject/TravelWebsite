@@ -249,6 +249,16 @@
             width: 100%;
         }
     }
+    /*#form-logo{
+        height: 170px;
+        width: 170px;
+        margin: 20px 20px 20px 20px;
+    }*/
+        #flight-gif{
+            height: 70px;
+            width: 100px;
+            margin: 20px 20px 20px 20px;
+        }
     </style>
     <body>
         <div id="head">
@@ -258,7 +268,7 @@
                 <li class="nav-list-left" id="flight-btn"><a href="index.html" class="a" onmouseover="hover2()" onmouseout="no-hover2()" onclick="abc()">FLIGHTS</a></li>
                 <li class="nav-list-left" id="hotel-btn"><a href="hotel.html" class="a" onmouseover="hover3()" onmouseout="no-hover3()">HOTELS</a></li>
                 <li class="nav-list-left" id="train-btn"><a href="train.html" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
-                <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
+                <li class="nav-list-left" id="bus-btn"><a href="bus.html" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
                 <li></li>
                 <li class="nav-list-right" id="support"><a href="/support" class="a" onmouseover="hover6()" onmouseout="no-hover6()">SUPPORT</a></li>
                 <li class="nav-list-right" id="login">
@@ -301,6 +311,9 @@
 
             <form class="modal-content animate" action="/action_page.php">
                 <div class="imgcontainer">
+                    <div id="form-logo" align="left">
+                        <img src="flight.gif" id="flight-gif" align="left">
+                    </div>
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     <img src="1.jpg" alt="Avatar" class="avatar">
                 </div>
