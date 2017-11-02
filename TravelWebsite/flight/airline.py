@@ -14,9 +14,10 @@ class GetData():
     def GetSource(self):
         try:
             print("Don't forget to export DISPLAY if using bash for windows")
-            dryscrape.start_xvfb()
+            #dryscrape.start_xvfb()
             session = dryscrape.Session()
             session.visit(self.url)
+            #time.sleep(10)
             response = session.body()
             self.source = response
             print("\nGOT DATA,STARTING SCRAPING\n")
@@ -265,7 +266,7 @@ class RoundTrip():
         data['Route'].append(two['Route'])
         data['Vendor'].append(two['Vendor'])
 
-        print(data)
+        #print(data)
         p1.terminate()
         p2.terminate()
 
@@ -275,26 +276,26 @@ class RoundTrip():
 
 '''
 CODE BELOW ONLY FOR DEBUGGING AND TESTING
-print("Enter Start Location")
-start = input()
-print("Enter Stop Location")
-end = input()
-print("Enter Date1 in format dd/mm/yyyy")
-date1 = input()
-print("Enter Date2 in format dd/mm/yyyy")
-date2 = input()
-print("Enter Adults")
-adults = input()
-print("Enter Childs")
-child = input()
-print("Enter Infants")
-infant = input()
-print("Processing...")
-oneway = OneWay()
-roundtrip = RoundTrip()
-print('ONE WAY TRIP\n\n')
-print(oneway.GetDictionary(start,end,date1,adults,child,infant))
-print('ROUND TRIP\n\n')
-print(roundtrip.GetDictionary(start,end,date1,date2,adults,child,infant))
-
 '''
+if __name__ == "__main__":
+    print("Enter Start Location")
+    start = input()
+    print("Enter Stop Location")
+    end = input()
+    print("Enter Date1 in format dd/mm/yyyy")
+    date1 = input()
+    print("Enter Date2 in format dd/mm/yyyy")
+    date2 = input()
+    print("Enter Adults")
+    adults = input()
+    print("Enter Childs")
+    child = input()
+    print("Enter Infants")
+    infant = input()
+    print("Processing...")
+    oneway = OneWay()
+    roundtrip = RoundTrip()
+    print('ONE WAY TRIP\n\n')
+    print(oneway.GetDictionary(start,end,date1,adults,child,infant))
+    print('ROUND TRIP\n\n')
+    print(roundtrip.GetDictionary(start,end,date1,date2,adults,child,infant))
