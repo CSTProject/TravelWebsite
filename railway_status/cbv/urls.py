@@ -20,8 +20,7 @@ from cbvapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.IndexView.as_view()),
-    url(r'^data/', views.getData,name='data'),
+
  
 
 ]

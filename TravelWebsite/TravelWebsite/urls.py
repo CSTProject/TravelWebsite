@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
+from myauthapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^', include('Home.urls')),
 	url(r'^flights/', include('flight.urls')),
+	url(r'^trains/', include('Trains.urls')),
+	url(r'^myauthapp/',include('myauthapp.urls')),
+    url(r'^special/',views.special,name='special'),
+    url(r'^logout/$',views.user_logout,name='logout'),
 ]
