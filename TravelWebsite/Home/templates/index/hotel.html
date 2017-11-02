@@ -1,0 +1,14 @@
+{% extends "index/header.html" %}
+
+{% block content %}
+        <div id="flight-form">
+            <form>
+                <h1>Hotel Search</h1>
+                Place<input type="text" class="input" name="place" value="Where?">
+                Check-In:<input type="text" name="checkin" class="input" required>
+                Check-Out:<input type="text" name="checkout" class="input" required>
+                Guests<input type="text" name="guests" class="input" required>
+                <button type="submit" value="Submit">Submit</button>
+            </form>
+			</div>
+{% endblock %}

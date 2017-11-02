@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
 {% extends 'index/header.html' %}
 {% load staticfiles %}
 {% block reg %}
-    <div class="jumbotron">
+    <div class="container" style="background-color:white; opacity:0.8;">
+	
         {% if registered %}
     <h1>Thank you</h1>
     {% else %}

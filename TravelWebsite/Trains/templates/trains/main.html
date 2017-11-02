@@ -5,9 +5,9 @@
     <h1>Live Status</h1>
     <form method="GET" action=" {{ request.build_absolute_uri }}data/" id="flight" >
         {% csrf_token %}
-        SOURCE_STATION code:<input type="text" name="sstn" id = "source" >
-        DESTINATION_STATION code:<input type="text" name="dstn" id = "destination" >
-        DATE(dd-mm-yyyy):<input type="text" name="date" id = "date" required>
+        Source Station Code:<input type="text" name="sstn" id = "source" >
+        Destination Station Code:<input type="text" name="dstn" id = "destination" >
+        Date (dd-mm-yyyy):<input type="text" name="date" id = "date" required>
         <input type="submit" value="Submit" onclick="getdata()">
     </form>
 </div>

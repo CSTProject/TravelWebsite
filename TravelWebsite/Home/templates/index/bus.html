@@ -1,0 +1,14 @@
+{% extends "index/header.html" %}
+
+{% block content %}
+    <div id="bus-form" class="container" style="background-color:white; opacity:0.8;">
+        <form method="POST" action="/action_page.php" id="bus">
+            <h1>Bus Search</h1>
+            FROM:<input type="text" name="from-bus" class="input" required>
+            TO:<input type="text" name="to-bus" class="input" required>
+            DATE:<input type="date" name="to-bus" class="input" required>
+            PASSENGERS:<input type="number" name="to-bus" class="input" required>
+            <button type="submit" value="Submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

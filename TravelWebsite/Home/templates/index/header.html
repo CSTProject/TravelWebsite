@@ -11,6 +11,7 @@
         background-image: url("{% static "Home/cover.jpeg" %}");
         background-repeat:no-repeat;
         background-size:cover; 
+		
     }
 div{
 	border-radius: 20px;    
@@ -42,14 +43,14 @@ div{
     }
     .add-text{
         height: 100px;
-        width: 360px;
+        width: 265px;
     }
     .offer-img{
-        width: 350px;
+        width: 265px;
         height: 130px;
     }
     .add-img{
-        width:360px;
+        width: 265px;
         height: 140px;
     }
     #flight {
@@ -271,6 +272,12 @@ div{
 		background-color: white;
         opacity: 0.7;
     }
+	#emails{
+            float: right;
+            height: 200px;
+            width: 250px;
+            background-color: rgba(255,255,255,0.8);
+        }
     </style>
 	<script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -289,7 +296,8 @@ div{
                 <li class="nav-list-left" id="train-btn"><a href="/trains/" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
                 <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
                 <li></li>
-                <li class="nav-list-right" id="support"><a href="/support" class="a" onmouseover="hover6()" onmouseout="no-hover6()">SUPPORT</a></li>
+                <li class="nav-list-right" id="support">
+                    <a onclick="document.getElementById('id02').style.display='block'" class="a" style="width:auto;">SUPPORT</a></li>
                 <li class="nav-list-right" id="login">
                 <a onclick="document.getElementById('id01').style.display='block'" class="a" style="width:auto;">LOGIN</a>
 
@@ -297,9 +305,8 @@ div{
 
             </ul>
         </div>
-       <div id ="body">
-	   
-			<div class="container" style="background-color:white; opacity:0.8;">
+       <div id ="body">	   
+			<div id = 'reg' >
 				{% block reg %}
 				{% endblock %}
 			</div>
@@ -310,25 +317,47 @@ div{
         <div id="offers">
             <div class="adds" id="first-add">
                 <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/1.jpeg" %}" class="offer-img"></div>
+                <div class="add-img"><img src="{% static "Home/one.jpeg" %}" class="offer-img"></div>
             </div>
             <div class="adds" id="second-add">
                 <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/2.jpeg" %}" class="offer-img"></div>
+                <div class="add-img"><img src="{% static "Home/two.jpeg" %}" class="offer-img"></div>
             </div>
             <div class="adds" id="third-add">
                 <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/3.jpeg" %}" class="offer-img"></div>
+                <div class="add-img"><img src="{% static "Home/three.jpeg" %}" class="offer-img"></div>
+            </div>
+			<div class="adds" id="forth-add">
+                <div class="add-text"></div>
+                <div class="add-img"><img src="{% static "Home/four.jpeg" %}" class="offer-img"></div>
             </div>
         </div>
         </center>
+		<div id="id02" class="modal">
+            <div id="emails" class="animate">
+                <div id="email-head">
+                    <h1>
+                    <center>
+                        Emails
+                    </center>
+                    </h1>
+                </div>
+                <div id="mails">
+                    <ol type="1">
+                    <li>abc1@def.com<br>
+                    <li>abc2@def.com<br>
+                    <li>abc3@def.com<br>
+                    <li>abc4@def.com
+                </div>
+            </div>
+        </div>
         <div id="id01" class="modal">
 
             <form class="modal-content animate" action="{% url 'myauthapp:user_login' %}" method="post">
 			{% csrf_token %}
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    <img src="{% static "Home/login.jpeg" %}" alt="Avatar" class="avatar">
+                    <img src="{% static "Home/loogin.jpeg" %}" alt="Avatar" class="avatar">
                 </div>
 
                 <div class="container">
@@ -367,6 +396,15 @@ div{
                     modal.style.display = "none";
                 }
             }
+			// Get the support page
+            var support = document.getElementById('id02');
+			// When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == support) {
+                    support.style.display = "none";
+                }
+            }
+			
         </script>
 	   </div>
        
