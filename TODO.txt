@@ -1,0 +1,12 @@
+1.	Color scheme ( 2 )
+2.	Fonts ( 2 )
+3.	Data list ( Kunwar )
+4.	Cover Page ( Mahesh ) 
+5.	Design ( 2 ) 
+6.	Image Slider (@home page) ( Kunwar )
+7.	Animations ( Mahesh )
+8.	Navbar modification ( 2 ) 
+Not So Important:
+9.	Liva data for Hotels/BUS ( Kunwar ) 
+10.	Responsive (For Mobiles) ( - )
+
