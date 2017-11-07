@@ -10,15 +10,16 @@
     <style>	
 	{% load static %}
     body {
-        background-image: url("{% static "Home/cover.jpeg" %}");
+        /*background-image: url("{% static "Home/cover.jpeg" */
         background-repeat:no-repeat;
         background-size:cover;
+		background-color: #F4D35E;
 		font-family: 'Bree Serif', serif;
     }
 	
 	
 div{
-	border-radius: 20px;    
+	   
     }
     #flight-form {
         height: 30%;
@@ -65,9 +66,9 @@ div{
     }
     #navigation-bar {
         margin: 10px 10px 10px 10px;
-        background-color: rgba(0,0,0,0.2);
-        color: white;
-		
+        background-color: #EE964B;
+        color: #EBEBD3;
+		height: 4em;
     }
     input {
         display: inline-flex;
@@ -98,6 +99,7 @@ div{
         margin: 0px 0px 0px 0px;
         padding: 0;
         overflow: hidden;
+        height: inherit;
     }
     li a {
         display: block;
@@ -105,32 +107,45 @@ div{
         padding: 14px 16px;
         text-decoration: none;
         font-family: 'Dosis', sans-serif;
+
+    }
+    .nav-list-left a{
+        height:inherit;
+        padding: 1.5em;
+        font-size: 1.1em;
     }
     .a{
-        color: white;
+        color: #EBEBD3;
+
     }
     .a:hover{
         color: black;
+
     }
     .nav-list-left {
         float: left;
         color: white;
+        height: inherit;
         /*background-color: rgba(255,255,255,0.8);*/
     }
+
     .nav-list-left:hover{
         background-color: white;
+        height: inherit;
         opacity: 0.8;
         font-weight: bold;
         font-size: large;
     }
     .nav-list-right {
         float:right;
+        height: inherit;
  /*       background-color: rgba(255,255,255,0.8);*/
     }
     .nav-list-right:hover {
         background-color: rgba(255,255,255,0.8);
         font-weight: bold;
         font-size: large;
+        height: inherit;
     }
     #rm-btn{
         margin: 0px 0px 0px 0px;
@@ -321,31 +336,7 @@ div{
 			{% block content %}
 			{% endblock %}
 			
-		<center>
-        <div id="offers">			
-				<center>
-				<div>
-				<div class="adds" id="first-add">
-					<div class="add-text"></div>
-					<div class="add-img"><img src="{% static "Home/one.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
-				</div>
-				<div class="adds" id="second-add">
-					<div class="add-text"></div>
-					<div class="add-img"><img src="{% static "Home/two.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
-				</div>
-				<div class="adds" id="third-add">
-					<div class="add-text"></div>
-					<div class="add-img"><img src="{% static "Home/three.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
-				</div>
-				<div class="adds" id="forth-add">
-					<div class="add-text"></div>
-					<div class="add-img"><img src="{% static "Home/four.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
-				</div>
-				</div>
-				</center>
-			
-        </div>
-        </center>
+		
 		<div id="id02" class="modal">
             <div id="emails" class="animate">
                 <div id="email-head">
