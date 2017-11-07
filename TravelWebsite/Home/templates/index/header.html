@@ -13,6 +13,8 @@
         background-size:cover; 
 		
     }
+	
+	
 div{
 	border-radius: 20px;    
     }
@@ -25,17 +27,18 @@ div{
     }
     #offers{
         height: 250px;
-        width: 1110px;
+        width: 80%;
         background-color: white;
-        margin: 10px 10px 10px 10px;
+        margin: 10px 10px 10px 10px;		
         padding: 10px;
         opacity: 0.6;
     }
+	
     .adds{
         background-color: rgba(200,200,200,0.5);
         margin: 5px 5px 5px 5px;
         float: left;
-        width: auto;
+        width: 23.5%;
         height: auto;
     }
     .adds:hover{
@@ -43,14 +46,16 @@ div{
     }
     .add-text{
         height: 100px;
-        width: 265px;
+        width: 25%;
     }
     .offer-img{
-        width: 265px;
+        margin: auto;
+		width: 100%;
         height: 130px;
+		
     }
     .add-img{
-        width: 265px;
+        width: 100%;
         height: 140px;
     }
     #flight {
@@ -314,23 +319,28 @@ div{
 			{% endblock %}
 			
 		<center>
-        <div id="offers">
-            <div class="adds" id="first-add">
-                <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/one.jpeg" %}" class="offer-img"></div>
-            </div>
-            <div class="adds" id="second-add">
-                <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/two.jpeg" %}" class="offer-img"></div>
-            </div>
-            <div class="adds" id="third-add">
-                <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/three.jpeg" %}" class="offer-img"></div>
-            </div>
-			<div class="adds" id="forth-add">
-                <div class="add-text"></div>
-                <div class="add-img"><img src="{% static "Home/four.jpeg" %}" class="offer-img"></div>
-            </div>
+        <div id="offers">			
+				<center>
+				<div>
+				<div class="adds" id="first-add">
+					<div class="add-text"></div>
+					<div class="add-img"><img src="{% static "Home/one.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
+				</div>
+				<div class="adds" id="second-add">
+					<div class="add-text"></div>
+					<div class="add-img"><img src="{% static "Home/two.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
+				</div>
+				<div class="adds" id="third-add">
+					<div class="add-text"></div>
+					<div class="add-img"><img src="{% static "Home/three.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
+				</div>
+				<div class="adds" id="forth-add">
+					<div class="add-text"></div>
+					<div class="add-img"><img src="{% static "Home/four.jpeg" %}" class="offer-img" style="opacity: 1.0;"></div>
+				</div>
+				</div>
+				</center>
+			
         </div>
         </center>
 		<div id="id02" class="modal">
@@ -338,16 +348,16 @@ div{
                 <div id="email-head">
                     <h1>
                     <center>
-                        Emails
+                        Contact
                     </center>
                     </h1>
                 </div>
                 <div id="mails">
-                    <ol type="1">
-                    <li>abc1@def.com<br>
-                    <li>abc2@def.com<br>
-                    <li>abc3@def.com<br>
-                    <li>abc4@def.com
+                    
+                    &nbsp;&nbsp; kunwar31@gmail.com<br>
+                    &nbsp;&nbsp; madhurgupta10@gmail.com<br>
+                    &nbsp;&nbsp; maandeep998@gmail.com<br>
+                    &nbsp;&nbsp; mahesh.jindal6@gmail.com
                 </div>
             </div>
         </div>

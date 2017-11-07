@@ -14,7 +14,7 @@ class GetData():
     def GetSource(self):
         try:
             print("Don't forget to export DISPLAY if using bash for windows")
-            dryscrape.start_xvfb()
+            #dryscrape.start_xvfb()
             session = dryscrape.Session()
             session.visit(self.url)
             #time.sleep(10)
