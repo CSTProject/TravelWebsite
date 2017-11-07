@@ -1,5 +1,7 @@
 Pls install packages :
-requests
+django
 django[bcrypt]
 django[argon2]
+dryscrape
+BeautifulSoup4
 Pillow
