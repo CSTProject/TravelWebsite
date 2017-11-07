@@ -5,13 +5,15 @@
             CST PROJECT WEBSITE
         </title>
     </head>
-    <style>
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
+    <style>	
 	{% load static %}
     body {
         background-image: url("{% static "Home/cover.jpeg" %}");
         background-repeat:no-repeat;
-        background-size:cover; 
-		
+        background-size:cover;
+		font-family: 'Bree Serif', serif;
     }
 	
 	
@@ -65,6 +67,7 @@ div{
         margin: 10px 10px 10px 10px;
         background-color: rgba(0,0,0,0.2);
         color: white;
+		
     }
     input {
         display: inline-flex;
@@ -74,7 +77,7 @@ div{
         box-sizing: border-box;
     }
     h1 {
-        font-family: 'Segoe UI';
+        font-family: 'Bree Serif', serif;
         color: grey;
         padding: 10px 10px 10px 10px;
     }
@@ -101,7 +104,7 @@ div{
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        font-family: 'Segoe UI';
+        font-family: 'Dosis', sans-serif;
     }
     .a{
         color: white;
