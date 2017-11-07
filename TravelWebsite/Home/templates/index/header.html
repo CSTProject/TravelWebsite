@@ -1,23 +1,44 @@
 <!DOCTYPE HTML>
+{% load static %}
 <html>
     <head>
         <title>
             CST PROJECT WEBSITE
         </title>
     </head>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
-    <style>	
-	{% load static %}
-    body {
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/font-awesome-4.7.0/css/font-awesome.min.css" %}">
+
+    <style>
+
+    #bod{
+
+        position: fixed;
         background-image: url("{% static 'Home/background.png' %}");
         background-repeat:no-repeat;
-        background-size:100%;
+        background-size:100% 90%;
 		background-color: #F4D35E;
+        background-position: center;
 		font-family: 'Bree Serif', serif;
+        height:100%;
+        width: 100%;
     }
 	
-
+html,body{
+    height:100%;
+    margin:0;
+    padding:0;
+}
+a{
+    color: #EBEBD3;
+}
+a:hover{
+    cursor: pointer;
+    color: #F95738;
+}
 div{
 	   
     }
@@ -65,8 +86,8 @@ div{
         padding: 10px 10px 10px 10px;
     }
     #navigation-bar {
-        margin: 10px 10px 10px 10px;
-        background-color: #EE964B;
+        margin: 10px;
+        background-color: #F95738;
         color: #EBEBD3;
 		height: 4em;
     }
@@ -112,16 +133,18 @@ div{
     .nav-list-left a{
         height:inherit;
         padding: 1.5em;
+        padding-top: 0.5em;
         font-size: 1.1em;
     }
-    .a{
-        color: #EBEBD3;
-
+    .nav-list-right a{
+        height:inherit;
+        padding: 1.5em;
+        font-size: 1.1em;
     }
-    .a:hover{
-        color: black;
-
+    .mini{
+        font-size: 0.8em;
     }
+
     .nav-list-left {
         float: left;
         color: white;
@@ -130,11 +153,12 @@ div{
     }
 
     .nav-list-left:hover{
-        background-color: white;
-        height: inherit;
+        background-color: #EBEBD3;
+        color:#F95738;
+        padding:auto;
         opacity: 0.8;
         font-weight: bold;
-        font-size: large;
+        font-size: 1.2em;
     }
     .nav-list-right {
         float:right;
@@ -142,10 +166,12 @@ div{
  /*       background-color: rgba(255,255,255,0.8);*/
     }
     .nav-list-right:hover {
-        background-color: rgba(255,255,255,0.8);
+        background-color: #EBEBD3;
+        color:#F95738;
+        padding:auto;
+        opacity: 0.8;
         font-weight: bold;
-        font-size: large;
-        height: inherit;
+        font-size: 1.2em;
     }
     #rm-btn{
         margin: 0px 0px 0px 0px;
@@ -197,6 +223,43 @@ div{
 
     .container {
         padding: 16px;
+    }
+    #hcontent{
+        margin: 6%;
+        text-align: center;
+        text-wrap: normal;
+        font-weight: 700;
+        font-size: 3rem;
+        color:#083D77;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #ebebd3;
+        font-family: 'roboto',sans-serif;
+
+    }
+
+    .animated {
+
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    @-webkit-keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+        40% {-webkit-transform: translateY(-30px);}
+        60% {-webkit-transform: translateY(-15px);}
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-30px);}
+        60% {transform: translateY(-15px);}
+    }
+
+    .bounce {
+        -webkit-animation-name: bounce;
+        animation-name: bounce;
     }
 
     span.psw {
@@ -308,33 +371,33 @@ div{
             crossorigin="anonymous">
 	</script>
 	</head>
-    <body>       
-        
-        <div id="head">
+    <body>
+    <div id ="bod">
+
             <div id="navigation-bar">
             <ul>
-                <li class="nav-list-left" id=""home-btn"><a href="/" class="a" onmouseover="hover2()" onmouseout="no-hover2()">HOME</a></li>
-                <li class="nav-list-left" id="flight-btn"><a href="/flights/" class="a" onmouseover="hover2()" onmouseout="no-hover2()" >FLIGHTS</a></li>
-                <li class="nav-list-left" id="hotel-btn"><a href="/hotel/" class="a" onmouseover="hover3()" onmouseout="no-hover3()">HOTELS</a></li>
-                <li class="nav-list-left" id="train-btn"><a href="/trains/" class="a" onmouseover="hover4()" onmouseout="no-hover4()">TRAINS</a></li>
-                <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover5()" onmouseout="no-hover5()">BUS</a></li>
-                <li></li>
-                <li class="nav-list-right" id="support">
+                <li class="nav-list-left" id="home-btn"><a href="/" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-home fa-2x" aria-hidden="true"></i><br><span class="mini">HOME</span></a></li>
+                <li class="nav-list-left" id="flight-btn"><a href="/flights/" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)" ><i class="fa fa-plane fa-2x" aria-hidden="true"></i><br><span class="mini">FLIGHTS</span></a></li>
+                <li class="nav-list-left" id="hotel-btn"><a href="/hotel/" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-bed fa-2x" aria-hidden="true"></i><br><span class="mini">HOTELS</span></a></li>
+                <li class="nav-list-left" id="train-btn"><a href="/trains/" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-train fa-2x" aria-hidden="true"></i><br><span class="mini">TRAINS</span></a></li>
+                <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-bus fa-2x" aria-hidden="true"></i><br><span class="mini">BUSES</span></a></li>
+                <li class="nav-list-right" onmouseover="hover2()" onmouseout="nohover2()" id="support">
                     <a onclick="document.getElementById('id02').style.display='block'" class="a" style="width:auto;">SUPPORT</a></li>
-                <li class="nav-list-right" id="login">
+                <li class="nav-list-right"  onmouseover="hover2()" onmouseout="nohover2()" id="login">
                 <a onclick="document.getElementById('id01').style.display='block'" class="a" style="width:auto;">LOGIN</a>
 
                 </li>
 
             </ul>
         </div>
-       <div id ="body">	   
+        {% block content %}
+        {% endblock %}
+
 			<div id = 'reg' >
 				{% block reg %}
 				{% endblock %}
 			</div>
-			{% block content %}
-			{% endblock %}
+
 			
 		
 		<div id="id02" class="modal">
@@ -347,11 +410,11 @@ div{
                     </h1>
                 </div>
                 <div id="mails">
-                    
+                    &nbsp;&nbsp; mahesh.jindal6@gmail.com<br>
                     &nbsp;&nbsp; kunwar31@gmail.com<br>
                     &nbsp;&nbsp; madhurgupta10@gmail.com<br>
-                    &nbsp;&nbsp; maandeep998@gmail.com<br>
-                    &nbsp;&nbsp; mahesh.jindal6@gmail.com
+                    &nbsp;&nbsp; maandeep998@gmail.com
+
                 </div>
             </div>
         </div>
@@ -386,11 +449,22 @@ div{
 				
             </form>
         </div>
-        </div>
         <div id="extras">
 				
         </div>
         <script>
+            function hover2(select){
+                document.getElementById('navigation-bar').style.height = '5em';
+               select.style.border="2px solid #083d77";
+               select.style.borderTop = "none";
+               select.addClass('fa-3x');
+
+            }
+            function nohover2(select){
+                document.getElementById('navigation-bar').style.height = '4em';
+                select.style.border="none";
+                select.removeClass('fa-3x');
+            }
             // Get the modal
             var modal = document.getElementById('id01');
 
@@ -411,6 +485,5 @@ div{
 			
         </script>
 	   </div>
-       
     </body>
 </html>
