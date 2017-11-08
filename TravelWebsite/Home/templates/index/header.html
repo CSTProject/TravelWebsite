@@ -8,46 +8,111 @@
     </head>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Dosis:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,500,500i,600,700,700i,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="{% static "css/font-awesome-4.7.0/css/font-awesome.min.css" %}">
+
 
     <style>
 
     #bod{
 
-        position: fixed;
+        position: relative;
         background-image: url("{% static 'Home/background.png' %}");
         background-repeat:no-repeat;
         background-size:100% 90%;
-		background-color: #F4D35E;
+		background-color: #011627;
         background-position: center;
 		font-family: 'Bree Serif', serif;
-        height:100%;
+        min-height:100%;
+        height: auto;
         width: 100%;
+        opacity: 0.9;
     }
 	
 html,body{
     height:100%;
     margin:0;
     padding:0;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+
 }
 a{
     color: #EBEBD3;
 }
-a:hover{
+
+
+    a:hover{
     cursor: pointer;
     color: #F95738;
 }
+#mheading{
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Dosis', sans-serif;
+    -webkit-text-stroke-width: 1.2px;
+    -webkit-text-stroke-color: #2EC4B6;
+
+}
+.fhead{
+    font-size:1.5em;
+    color:#FDFFFC;
+    -webkit-text-stroke-width: 1.2px;
+    -webkit-text-stroke-color: #011627;
+
+}
+input[type="text"],input[type="date"],input[type="number"]{
+     border-radius: 4px;
+     background-color: #FDFFFC;
+     color: #2EC4B6;
+     padding: 0.7em;
+     font-size: 0.9em;
+     border:1px solid #FF9F1C;
+ }
+input:focus{
+    border:2px solid #E71D36;
+    outline: none;
+}
+input[type="submit"]{
+    width:10rem;
+    padding:1em 3em;
+    color:#2EC4B6;
+    font-size: 1em;
+    border:2px solid #2EC4B6;
+    text-align: center;
+    background-color: #FDFFFC;
+    border-radius: 8px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+input[type="submit"]:hover{
+    color:#FDFFFC;
+    border:2px solid #FDFFFC;
+    background-color: #2EC4B6;
+
+}
+.sheading{
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.8em;
+    color: #E71D36;
+}
+
 div{
 	   
     }
-    #flight-form {
-        height: 30%;
+    .flight-form {
+        height: auto;
         background-color: white;
-        margin: 10px 10px 10px 10px;
-        padding: 10px 10px 10px 10px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        padding: 2em;
         opacity: 0.8;
+        border-radius: 8px;
+        animation-delay: 0.8s;
     }
     #offers{
         height: 250px;
@@ -87,7 +152,7 @@ div{
     }
     #navigation-bar {
         margin: 10px;
-        background-color: #F95738;
+        background-color: #ff5e5b;
         color: #EBEBD3;
 		height: 4em;
     }
@@ -225,16 +290,27 @@ div{
         padding: 16px;
     }
     #hcontent{
-        margin: 6%;
+        padding: 4px 3em;
+        -webkit-border-radius:;
+        -moz-border-radius:;
+        border-radius:8px;
+        margin: 3% auto;
         text-align: center;
         text-wrap: normal;
         font-weight: 700;
         font-size: 3rem;
-        color:#083D77;
+        height: 3em;
+        background-color:#2EC4B6 ;
+        color:#FDFFFC;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: #ebebd3;
-        font-family: 'roboto',sans-serif;
+        font-family: 'roboto' sans-serif;
+        display: table;
 
+    }
+    h2{
+        vertical-align: middle;
+        display: table-cell;
     }
 
     .animated {
@@ -364,6 +440,7 @@ div{
             width: 250px;
             background-color: rgba(255,255,255,0.8);
         }
+
     </style>
 	<script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
