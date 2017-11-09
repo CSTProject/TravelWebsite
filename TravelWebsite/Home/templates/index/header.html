@@ -451,9 +451,9 @@ div{
 	</script>
     <script src = "{% static 'js/awesomplete.js' %}" ></script>
         <script>
-            $( function() {
-                $( "#datepicker" ).datepicker();
-            } );
+            //$( function() {
+              //  $( "#datepicker" ).datepicker();
+            //} );
         </script>
 	</head>
     <body>
@@ -571,6 +571,7 @@ div{
         </script>
         <script>
             var input = document.getElementsByClassName("airport");
+            var rinput = document.getElementsByClassName('rinput');
             var airport =  [
                 ['Agartala,Tripura,Agartala Singerbhil','IXA'],
                 ['Agra,Uttar Pradesh,Agra Airport','AGR'],
@@ -644,18 +645,40 @@ div{
                 ['Vishakhapatnam,Andhra Pradesh,Vishakhapatnam Airport','VTZ']
 
             ];
-            new Awesomplete(input[0], {
-                list:airport
-            });
-            new Awesomplete(input[1], {
-                list:airport
-            });
-            new Awesomplete(input[2], {
-                list:airport
-            });
-            new Awesomplete(input[3], {
-                list:airport
-            });
+            var railway = [
+                ['Chandigarh, Chandigarh','CDG'],
+                ['New Delhi,Delhi','NDLS'],
+                ['Central Chennai','MAS'],
+                ['Andheri,Mumbai,Maharashtra','ADH'],
+                ['Chinchvad,Pune,Maharashtra','CCH'],
+                ['Amausi,Lucknow,Uttar Pradesh','AMS'],
+                ['Ambala Cant Junction,Ambala','UMB']
+            ];
+            if (input[0])
+            {
+                new Awesomplete(input[0], {
+                    list:airport
+                });
+                new Awesomplete(input[1], {
+                    list:airport
+                });
+                new Awesomplete(input[2], {
+                    list:airport
+                });
+                new Awesomplete(input[3], {
+                    list:airport
+                });
+            }
+            if (rinput[0])
+            {
+                new Awesomplete(rinput[0], {
+                    list:railway
+                });
+                new Awesomplete(rinput[1], {
+                    list:railway
+                });
+            }
+
         </script>
 	   </div>
     </body>
