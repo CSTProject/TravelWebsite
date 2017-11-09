@@ -1,14 +1,14 @@
 {% extends "index/header.html" %}
 
 {% block content %}
-        <div id="flight-form">
+    <div id="mheading"> <h1>HOTEL SEARCH</h1></div>
+        <div class="flight-form">
             <form>
-                <h1>Hotel Search</h1>
-                Place<input type="text" class="input" name="place" value="Where?">
-                Check-In:<input type="text" name="checkin" class="input" required>
-                Check-Out:<input type="text" name="checkout" class="input" required>
-                Guests<input type="text" name="guests" class="input" required>
-                <button type="submit" value="Submit">Submit</button>
+                <span class="fhead">Place</span><input type="text" class="input" name="place" placeholder="Where?">
+                <span class="fhead">Check-In:</span><input type="text" name="checkin" class="input" required>
+                <span class="fhead">Check-Out:</span><input type="text" name="checkout" class="input" required>
+                <span class="fhead">Guests</span><input type="text" name="guests" class="input" required>
+                <input type="submit" value="Submit">
             </form>
 			</div>
 {% endblock %}

@@ -2,24 +2,36 @@
 
 {% block content %}
 {% load ipaddress %}
- <div id="flight-form">
-		<h1>Flight Search</h1>
-            <h2>One Way Trip</h2>
+		<div id="mheading"> <h1>FLIGHT SEARCH</h1></div>
+    <div class="flight-form">
+        <span class="sheading"><h2>One Way Trip</h2></span>
             <form method="GET" action="{{ip}}/flights/result_oneway/" id="oneway" >
                 {% csrf_token %}
+<<<<<<< HEAD
                  FROM:<input name="origin" id = "origin" class = "airport" required>
                  TO:<input type="text" name="dest" id = "dest" class = "airport" required>
                 DATE:<input type="date" name="date" id = "date" required>
                  Adults:<input type="number" name="adults" id = "adults" required>
                  Childs:<input type="number" name="childs" id = "childs" required>
 				  Infants:<input type="number" name="infants" id = "infants" required>
+=======
+				
+                <span class="fhead">FROM:</span><input type="text" name="origin" id = "origin" required>&nbsp;
+                <span class="fhead">TO:</span><input type="text" name="dest" id = "dest" required>&nbsp;
+                <span class="fhead">DATE:</span><input type="date" name="date" id = "date" required>&nbsp;
+                 <span class="fhead">Adults:</span><input type="number" name="adults" id = "adults" required>&nbsp;
+                 <span class="fhead">Childs:</span><input type="number" name="childs" id = "childs" required>&nbsp;
+				  <span class="fhead">Infants:</span><input type="number" name="infants" id = "infants" required><br>
+>>>>>>> 6cf04cfe38945a70ca9bb19336848abc337ea2b1
                  <input type="submit" ></input>
-             
             </form>
-             <h2>Round Trip</h2>
+    </div><br>
+    <div class="flight-form">
+        <span class="sheading"><h2>Round Trip</h2></span>
              <form method="GET" action="{{ip}}/flights/result_roundtrip/" id="roundtrip" >
                  {% csrf_token %}
 
+<<<<<<< HEAD
                  FROM:<input type="text" name="origin" id = "origin1" class = "airport" required>
                  TO:<input type="text" name="dest" id = "dest1" class = "airport" required>
                  DEPART DATE:<input type="date" name="date1" id = "date1" required>
@@ -27,8 +39,16 @@
                  Adults:<input type="number" name="adults" id = "adults1" required>
                  Childs:<input type="number" name="childs" id = "childs1" required>
                  Infants:<input type="number" name="infants" id = "infants1" required>
+=======
+                 <span class="fhead">FROM:</span><input type="text" name="origin" id = "origin" required>&nbsp;
+                 <span class="fhead">TO:</span><input type="text" name="dest" id = "dest" required>&nbsp;
+                 <span class="fhead">DEPART DATE:</span><input type="date" name="date1" id = "date1" required>&nbsp;
+                 <span class="fhead">RETURN DATE:</span><input type="date" name="date2" id = "date2" required>&nbsp;
+                 <span class="fhead">Adults:</span><input type="number" name="adults" id = "adults" required>&nbsp;
+                 <span class="fhead">Childs:</span><input type="number" name="childs" id = "childs" required>&nbsp;
+                 <span class="fhead">Infants:</span><input type="number" name="infants" id = "infants" required><br>
+>>>>>>> 6cf04cfe38945a70ca9bb19336848abc337ea2b1
                  <input type="submit" ></input>
-
              </form>
  </div>
 

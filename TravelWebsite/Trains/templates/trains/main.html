@@ -1,13 +1,14 @@
 {% extends "index/header.html" %}
 
 {% block content %}
-<div id="flight-form">
-    <h1>Live Status</h1>
+    <div id="mheading"> <h1>TRAINS SEARCH</h1></div>
+<div class="flight-form">
+    <span class="sheading"> <h2>Get Trains b/w Two Stations</h2></span>
     <form method="GET" action=" {{ request.build_absolute_uri }}data/" id="flight" >
         {% csrf_token %}
-        Source Station Code:<input type="text" name="sstn" id = "source" required>
-        Destination Station Code:<input type="text" name="dstn" id = "destination" required>
-        Date (dd-mm-yyyy):<input type="date" name="date" id = "date" required>
+        <span class="fhead">Source Station Code:</span><input type="text" name="sstn" id = "source" required>
+        <span class="fhead">Destination Station Code:</span><input type="text" name="dstn" id = "destination" required>
+        <span class="fhead">Date (dd-mm-yyyy):</span><input type="date" name="date" id = "date" required>
         <input type="submit" value="Submit" onclick="getdata()">
     </form>
 </div>
