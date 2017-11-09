@@ -3,7 +3,7 @@
 {% block content %}
 {% load ipaddress %}
 		<div id="mheading"> <h1>FLIGHT SEARCH</h1></div>
-    <div class="flight-form">
+    <div class="flight-form ">
         <span class="sheading"><h2>One Way Trip</h2></span>
             <form method="GET" action="{{ip}}/flights/result_oneway/" id="oneway" >
                 {% csrf_token %}
@@ -17,7 +17,7 @@
                  <input type="submit" ></input>
             </form>
     </div><br>
-    <div class="flight-form">
+    <div class="flight-form ">
         <span class="sheading"><h2>Round Trip</h2></span>
              <form method="GET" action="{{ip}}/flights/result_roundtrip/" id="roundtrip" >
                  {% csrf_token %}
