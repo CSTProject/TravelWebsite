@@ -7,9 +7,8 @@
             <h2>One Way Trip</h2>
             <form method="GET" action="{{ip}}/flights/result_oneway/" id="oneway" >
                 {% csrf_token %}
-				
-                 FROM:<input type="text" name="origin" id = "origin" required>
-                 TO:<input type="text" name="dest" id = "dest" required>
+                 FROM:<input name="origin" id = "origin" class = "airport" required>
+                 TO:<input type="text" name="dest" id = "dest" class = "airport" required>
                 DATE:<input type="date" name="date" id = "date" required>
                  Adults:<input type="number" name="adults" id = "adults" required>
                  Childs:<input type="number" name="childs" id = "childs" required>
@@ -21,17 +20,18 @@
              <form method="GET" action="{{ip}}/flights/result_roundtrip/" id="roundtrip" >
                  {% csrf_token %}
 
-                 FROM:<input type="text" name="origin" id = "origin" required>
-                 TO:<input type="text" name="dest" id = "dest" required>
+                 FROM:<input type="text" name="origin" id = "origin1" class = "airport" required>
+                 TO:<input type="text" name="dest" id = "dest1" class = "airport" required>
                  DEPART DATE:<input type="date" name="date1" id = "date1" required>
                  RETURN DATE:<input type="date" name="date2" id = "date2" required>
-                 Adults:<input type="number" name="adults" id = "adults" required>
-                 Childs:<input type="number" name="childs" id = "childs" required>
-                 Infants:<input type="number" name="infants" id = "infants" required>
+                 Adults:<input type="number" name="adults" id = "adults1" required>
+                 Childs:<input type="number" name="childs" id = "childs1" required>
+                 Infants:<input type="number" name="infants" id = "infants1" required>
                  <input type="submit" ></input>
 
              </form>
  </div>
+
 {% block result %}
 {% endblock %}
 {% endblock %}
