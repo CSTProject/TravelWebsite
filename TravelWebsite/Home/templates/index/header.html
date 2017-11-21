@@ -19,18 +19,19 @@
     #bod{
 
         position: relative;
-        background-image: url("{% static 'Home/background.png' %}");
-        background-repeat:no-repeat;
-        background-size:100% 90%;
-		background-color: #011627;
-        background-position: center;
+        background: url("{% static 'Home/m.jpg' %}") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 		font-family: 'Bree Serif', serif;
         min-height:100%;
         height: auto;
         width: 100%;
         opacity: 1.0;
+        margin-top: -10px;
     }
-	
+
 html,body{
 	top:0;
     height:100%;
@@ -114,7 +115,7 @@ div{
         margin-left: 1.5rem;
         margin-right: 1.5rem;
         padding: 2em;
-        opacity: 0.8;
+        opacity: 0.97;
         border-radius: 8px;
         animation-delay: 0.8s;
     }
@@ -156,7 +157,7 @@ div{
     }
     #navigation-bar {
         margin: 10px;
-        background-color: #ff5e5b;
+        background-color: #154462;
         color: #EBEBD3;
 		height: 4em;
     }
@@ -297,13 +298,15 @@ div{
         -webkit-border-radius:;
         -moz-border-radius:;
         border-radius:8px;
-        margin: 3% auto;
+        margin-left: auto;
+		margin-right: auto;		
+		margin-bottom: 10px
         text-align: center;
         text-wrap: normal;
         font-weight: 700;
         font-size: 3rem;
         height: 3em;
-        background-color:#2EC4B6 ;
+        
         color:#FDFFFC;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: #ebebd3;
@@ -435,7 +438,7 @@ div{
         margin: 10px 10px 10px 10px;
 		padding: 10px 10px 10px 10px;
 		background-color: white;
-        opacity: 0.7;
+        opacity: 0.95;
     }
 	#emails{
             float: right;
@@ -529,6 +532,33 @@ div{
 				
         </div>
         <script>
+            var screenh = window.innerHeight;
+            if (window.innerHeight > window.innerWidth)
+            {
+                var body = document.getElementById('bod').style;
+                body.background = "url(\"{% static 'Home/maap.jpg' %}\") no-repeat center center fixed";
+                body.webkitBackgroundSize = "cover";
+                body.mozBackgroundSize = "cover";
+                body.oBackgroundSize = "cover";
+                body.backgroundSize = "cover";
+            }
+            document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
+            window.addEventListener('resize',function () {
+                document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
+            });
+            window.addEventListener('onclick',function () {
+                if (window.innerHeight > window.innerWidth)
+                {
+                    var body = document.getElementById('bod').style;
+                    body.background = "url(\"{% static 'Home/maap.jpg' %}\") no-repeat center center fixed";
+                    body.webkitBackgroundSize = "cover";
+                    body.mozBackgroundSize = "cover";
+                    body.oBackgroundSize = "cover";
+                    body.backgroundSize = "cover";
+                }
+            });
+
+
             function hover2(select){
                 document.getElementById('navigation-bar').style.height = '5em';
                select.style.border="2px solid #083d77";
@@ -558,6 +588,7 @@ div{
                     support.style.display = "none";
                 }
             }
+			
 			
         </script>
         <script>
