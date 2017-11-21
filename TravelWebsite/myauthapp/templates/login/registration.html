@@ -3,34 +3,34 @@
 {% extends 'index/header.html' %}
 {% load staticfiles %}
 {% block reg %}
-    <div class="flight-form" style="background-color:white; opacity:0.8;">
-	
+    <div class="flight-form" id="register" style="background-color:white; opacity:0.8;">
+
         {% if registered %}
-    <h1>Thank you</h1>
-    {% else %}
-         <h1>Register here</h1>
+            <h1 class="sheading lfont">Thank you</h1>
+        {% else %}
+            <h1 class="sheading lfont">Register here</h1>
             <h3>Fill out this form</h3>
             <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" name="" value="Register">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <input type="submit" name="" value="Register">
             </form>
 
-    {% endif %}
+        {% endif %}
     </div>
 
-<script>
-    function checkUserName() {
-        // Ajax validation code
-    }
-    userinput = document.getElementById('id_username');
-    if (userinput !== null)
-    {
-        userinput.onclick = userinput.onchange = userinput.onblur = checkUserName;
-    }
+    <script>
+        function checkUserName() {
+            // Ajax validation code
+        }
+        userinput = document.getElementById('id_username');
+        if (userinput !== null)
+        {
+            userinput.onclick = userinput.onchange = userinput.onblur = checkUserName;
+        }
 
 
-</script>
+    </script>
 
 {% endblock %}

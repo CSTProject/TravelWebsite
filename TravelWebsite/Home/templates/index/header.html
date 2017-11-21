@@ -62,6 +62,21 @@ a{
     -webkit-text-stroke-color: #154462;
 
 }
+    #register>form>input[type="text"],input[type="url"],input[type="date"],input[type="number"],input[type="email"],input[type="password"]{
+        border-radius: 4px;
+        background-color: #FDFFFC;
+        color: #2EC4B6;
+        padding: 0.7em;
+        font-size: 0.9em;
+        border:1px solid #FF9F1C;
+        font-family: 'Bree Serif', serif;
+    }
+    #register{
+        margin: auto;
+        width: 30%;
+        min-width: 250px;
+
+    }
 .fhead{
     font-size:1.5em;
     color:#FDFFFC;
@@ -69,14 +84,35 @@ a{
     -webkit-text-stroke-color: #011627;
 
 }
-input[type="text"],input[type="date"],input[type="number"]{
-     border-radius: 4px;
-     background-color: #FDFFFC;
-     color: #2EC4B6;
-     padding: 0.7em;
-     font-size: 0.9em;
-     border:1px solid #FF9F1C;
- }
+    .sheadinguser{
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.7em;
+        color: #0060E3;
+    }
+    .helptext{
+        display: block;
+        font-size: 0.7em;
+        color: red;
+        overflow: hidden;
+        white-space: nowrap;
+
+    }
+    .sheading{
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.8em;
+        color: #E71D36;
+    }
+    .lfont{
+        font-size: 3em;
+    }
+    input[type="text"],input[type="date"],input[type="number"],input[type="password"]{
+        border-radius: 4px;
+        background-color: #FDFFFC;
+        color: #2EC4B6;
+        padding: 0.7em;
+        font-size: 0.9em;
+        border:1px solid #FF9F1C;
+    }
 input:focus{
     border:2px solid #E71D36;
     outline: none;
@@ -248,6 +284,13 @@ div{
         padding: 0px;
         text-space: 0px;
     }
+    #modbox{
+        border-radius: 20px;
+        width:30%;
+        margin-top: 20%;
+        min-width:200px;
+        margin: auto;
+    }
     .fbox {
         width: 100%;
         padding: 12px 20px;
@@ -255,6 +298,7 @@ div{
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
+        border-radius: 5px;
     }
 
     /* Set a style for all buttons */
@@ -372,9 +416,7 @@ div{
         margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
         border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
-    }
-    .modal-content:hover{
-        opacity: 1.0;
+        border-radius: 10px;
     }
 
     /* The Close Button (x) */
@@ -531,34 +573,27 @@ div{
         </div>
         <div id="id01" class="modal">
 
-            <form class="modal-content animate" action="{% url 'myauthapp:user_login' %}" method="post">
-			{% csrf_token %}
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    <img src="{% static "Home/loogin.jpeg" %}" alt="Avatar" class="avatar">
-                </div>
-
-                <div class="container">
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" class="fbox" name="username" required>
-
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" class="fbox" name="password" required>
-                    <div id="rm" align="right">
-                    <input type="checkbox" checked="checked" id="rm-btn"> Remember me
+            <div id="modbox">
+                <form class="modal-content animate" action="{% url 'myauthapp:user_login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="container">
+                        <label class="sheadinguser"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" class="fbox" name="username" required>
+                        <label class="sheadinguser"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" class="fbox" name="password" required>
+                        <div id="rm" align="right">
+                            <input type="checkbox" checked="checked" id="rm-btn"> Remember me
+                        </div>
+                        <input  type="submit" value="Login">
                     </div>
-                    <center>
-                    <button id="login-sub-btn" type="submit">Login</button>
-                    </center>
 
-                </div>
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                        <span class="psw"><a href="{{ip}}/myauthapp/register/" style="color:#081c28">New Account</a></span>
+                    </div>
+                </form>
+            </div>
 
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw"><a href="{{ip}}/myauthapp/register/" style="color:#081c28">New Account</a></span>
-                </div>
-				
-            </form>
         </div>
         <div id="extras">
 				
