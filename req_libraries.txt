@@ -1,4 +1,4 @@
-Pls install packages :
+Please install these packages :
 django
 django[bcrypt]
 django[argon2]
