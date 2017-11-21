@@ -447,7 +447,39 @@ div{
             width: 250px;
             background-color: rgba(255,255,255,0.8);
         }
+    .mySlides {display:none}
 
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+    .active {
+        background-color: #717171;
+    }
+    /* Fading animation */
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+
+    }
     </style>
     <script src = "{% static 'js/awesomplete.js' %}" ></script>
 	</head>
@@ -545,9 +577,9 @@ div{
             }
             if (document.getElementById('hcontent')!== null)
             {
-                document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
+                document.getElementById('hcontent').style.marginTop = screenh*0.15 + "px";
                 window.addEventListener('resize',function () {
-                    document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
+                    document.getElementById('hcontent').style.marginTop = screenh*0.15 + "px";
                 });
 
             }
