@@ -302,10 +302,10 @@ div{
         margin-left: auto;
 		margin-right: auto;		
 		margin-bottom: 10px
-        text-align: center;
+
         text-wrap: normal;
         font-weight: 700;
-        font-size: 3rem;
+        font-size: 2.9rem;
         height: 3em;
         
         color:#FDFFFC;
@@ -447,17 +447,16 @@ div{
             width: 250px;
             background-color: rgba(255,255,255,0.8);
         }
-    .mySlides {display:none}
+    .mySlides {
+        display:none;
+    }
 
     /* Slideshow container */
     .slideshow-container {
-        max-width: 1000px;
         position: relative;
         margin: auto;
     }
-    .active {
-        background-color: #717171;
-    }
+
     /* Fading animation */
     .fade {
         -webkit-animation-name: fade;
@@ -577,12 +576,24 @@ div{
             }
             if (document.getElementById('hcontent')!== null)
             {
-                document.getElementById('hcontent').style.marginTop = screenh*0.15 + "px";
+               // document.getElementById('hcontent').style.marginTop = screenh*0.05 + "px";
                 window.addEventListener('resize',function () {
-                    document.getElementById('hcontent').style.marginTop = screenh*0.15 + "px";
+                    //document.getElementById('hcontent').style.marginTop = screenh*0.05 + "px";
                 });
 
             }
+            var carousel = document.getElementById("slideshow-container");
+            if (carousel !== null)
+            {
+                carousel.style.width = window.innerWidth * 0.7 + "px";
+                carousel.style.height = window.innerHeight * 0.65 + "px";
+                if (window.innerHeight > window.innerWidth)
+                {
+                    carousel.style.height = window.innerHeight * 0.35 + "px";
+                }
+            }
+
+
 
 
             window.addEventListener('onclick',function () {

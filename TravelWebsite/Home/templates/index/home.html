@@ -2,48 +2,85 @@
 
 {% block content %}
 {% load static %}
-<div class="slideshow-container">
+<div id="slideshow-container">
 
     <div class="mySlides fade">
-        <img src="{% static 'Home/carousel (1).jpg' %}" style="width:100%">
-    </div>
-
-    <div class="mySlides fade">
-        <img src="{% static 'Home/carousel (2).jpg' %}" style="width:100%">
+        <img class = "img" src="{% static 'Home/carousel (1).jpg' %}">
     </div>
 
     <div class="mySlides fade">
-        <img src="{% static 'Home/carousel (3).jpg' %}" style="width:100%">
+        <img class = "img" src="{% static 'Home/carousel (2).jpg' %}" >
+    </div>
+
+    <div class="mySlides fade">
+        <img class = "img" src="{% static 'Home/carousel (3).jpg' %}">
     </div>
     <div class="mySlides fade">
-        <img src="{% static 'Home/carousel (4).jpg' %}" style="width:100%">
+        <img class = "img" src="{% static 'Home/carousel (4).jpg' %}">
     </div>
     <div class="mySlides fade">
-        <img src="{% static 'Home/carousel (5).jpg' %}" style="width:100%">
+        <img class = "img" src="{% static 'Home/carousel (5).jpg' %}">
     </div>
 
 </div>
-
+<div id="hcontent" class="animated bounce"><h2>Welcome To Travelista</h2></div>
 
 <script>
     var slideIndex = 0;
+
     showSlides();
 
     function showSlides() {
         var i;
+
         var slides = document.getElementsByClassName("mySlides");
+        var images = document.getElementsByClassName("img");
+        var carousel = document.getElementById("slideshow-container").style;
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
+
         }
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
         slides[slideIndex-1].style.display = "block";
+        images[slideIndex-1].style.maxHeight = window.innerHeight * 0.65 + "px";
+        images[slideIndex-1].style.maxWidth = window.innerWidth * 0.90 + "px";
+        var aspect_r = 16/9;
+        if (slideIndex!== 1)
+        {
+            aspect_r = 4.5/3;
+            images[slideIndex-1].style.width = "75%";
+        }
+
+        var imgw = window.innerHeight * 0.65 * aspect_r;
+        var approx_left_margin = (window.innerWidth - imgw)/2;
+        carousel.marginLeft = 0.99*approx_left_margin + "px";
+
+        if (window.innerHeight>window.innerWidth)
+        {
+            images[slideIndex-1].style.maxHeight = 500 + "px";
+            images[slideIndex-1].style.maxWidth = 800 + "px";
+            if (slideIndex!== 1)
+            {
+                aspect_r = 1.15;
+            }
+            imgw = 450 * aspect_r;
+            approx_left_margin = (window.innerWidth - imgw)/2;
+            carousel.marginLeft = 0.99*approx_left_margin + "px";
+            carousel.marginTop = window.innerHeight * 0.20 + "px";
+
+            document.getElementById("hcontent").style.marginLeft =  (window.innerWidth - 300)/2;
+
+        }
+
+
+        //alert("window size:" + window.innerWidth + " image size:" + imgw);
         setTimeout(showSlides, 5000); // Change image every 5 seconds
     }
 </script>
 
 
-    <div id="hcontent" class="animated bounce"><h2>Welcome To Travel Website</h2></div>
+
 
 
 {% endblock %}
