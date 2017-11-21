@@ -3,7 +3,7 @@
 {% extends 'index/header.html' %}
 {% load staticfiles %}
 {% block reg %}
-    <div class="container" style="background-color:white; opacity:0.8;">
+    <div class="flight-form" style="background-color:white; opacity:0.8;">
 	
         {% if registered %}
     <h1>Thank you</h1>
@@ -19,4 +19,18 @@
 
     {% endif %}
     </div>
+
+<script>
+    function checkUserName() {
+        // Ajax validation code
+    }
+    userinput = document.getElementById('id_username');
+    if (userinput !== null)
+    {
+        userinput.onclick = userinput.onchange = userinput.onblur = checkUserName;
+    }
+
+
+</script>
+
 {% endblock %}

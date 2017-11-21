@@ -3,12 +3,12 @@
 {% block content %}
     <div id="mheading"> <h1>BUS SEARCH</h1></div>
     <div class="flight-form" class="container" >
-        <form method="POST" action="/action_page.php" id="bus">
+        <form method="POST" id="bus">
             <span class="fhead">FROM:</span><input type="text" name="from-bus" class="input" required>
             <span class="fhead">TO:</span><input type="text" name="to-bus" class="input" required>
             <span class="fhead">DATE:</span><input type="date" name="to-bus" class="input" required>
             <span class="fhead">PASSENGERS:</span><input type="number" name="to-bus" class="input" required>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onclick="alert('Bus Search Coming Soon!');">
         </form>
     </div>
 {% endblock %}

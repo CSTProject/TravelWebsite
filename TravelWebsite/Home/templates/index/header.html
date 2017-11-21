@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 {% load static %}
+{% load ipaddress %}
 <html>
     <head>
         <title>
@@ -57,8 +58,8 @@ a{
     text-align: center;
     font-size: 1.2rem;
     font-family: 'Dosis', sans-serif;
-    -webkit-text-stroke-width: 1.2px;
-    -webkit-text-stroke-color: #2EC4B6;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: #154462;
 
 }
 .fhead{
@@ -169,7 +170,7 @@ div{
     }
     h1 {
         font-family: 'Bree Serif', serif;
-        color: grey;
+        color: #f99d20;
         padding: 10px 10px 10px 10px;
     }
     button {
@@ -523,7 +524,7 @@ div{
 
                 <div class="container" style="background-color:#f1f1f1">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw"><a href="myauthapp/register/">New Account</a></span>
+                    <span class="psw"><a href="{{ip}}/myauthapp/register/" style="color:#081c28">New Account</a></span>
                 </div>
 				
             </form>
@@ -542,10 +543,16 @@ div{
                 body.oBackgroundSize = "cover";
                 body.backgroundSize = "cover";
             }
-            document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
-            window.addEventListener('resize',function () {
+            if (document.getElementById('hcontent')!== null)
+            {
                 document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
-            });
+                window.addEventListener('resize',function () {
+                    document.getElementById('hcontent').style.marginTop = screenh*0.75 + "px";
+                });
+
+            }
+
+
             window.addEventListener('onclick',function () {
                 if (window.innerHeight > window.innerWidth)
                 {
