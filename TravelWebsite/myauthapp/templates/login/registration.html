@@ -3,12 +3,12 @@
 {% extends 'index/header.html' %}
 {% load staticfiles %}
 {% block reg %}
-    <div class="flight-form" id="register" style="background-color:white; opacity:0.8;">
+    <div class="flight-form" id="register" style="background-color:white; opacity:0.95;">
 
         {% if registered %}
-            <h1 class="sheading lfont">Thank you</h1>
+            <h1 class="sheading" style="font-size: 3em;">Thank you</h1>
         {% else %}
-            <h1 class="sheading lfont">Register here</h1>
+            <h1 class="sheading" style = "font-size: 3em;">Register here</h1>
             <h3>Fill out this form</h3>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}

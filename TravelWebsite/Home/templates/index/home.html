@@ -7,26 +7,34 @@
     <div class="mySlides fade">
         <img class = "img" src="{% static 'Home/carousel (1).jpg' %}">
     </div>
-
     <div class="mySlides fade">
-        <img class = "img" src="{% static 'Home/carousel (2).jpg' %}" >
+        <img class = "img" src="{% static 'Home/mmm.jpg' %}">
+    </div>
+    <div class="mySlides fade">
+        <img class = "img" src="{% static 'Home/carousel (6).jpg' %}" >
     </div>
 
     <div class="mySlides fade">
-        <img class = "img" src="{% static 'Home/carousel (3).jpg' %}">
+        <img class = "img" src="{% static 'Home/carousel (7).jpg' %}">
     </div>
     <div class="mySlides fade">
-        <img class = "img" src="{% static 'Home/carousel (4).jpg' %}">
+        <img class = "img" src="{% static 'Home/carousel (8).jpg' %}">
     </div>
     <div class="mySlides fade">
-        <img class = "img" src="{% static 'Home/carousel (5).jpg' %}">
+        <img class = "img" src="{% static 'Home/carousel (9).jpg' %}">
     </div>
 
 </div>
 <div id="hcontent" class="animated bounce"><h2>Welcome To Travelista</h2></div>
+<div id ="tagcontent" class="animated bounce">One Stop destination for All your Travel Information</div>
 
 <script>
     var slideIndex = 0;
+
+    var body = document.getElementById('bod').style;
+    body.backgroundColor = "black";
+    body.overflow = "hidden";
+
 
     showSlides();
 
@@ -43,27 +51,20 @@
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
         slides[slideIndex-1].style.display = "block";
-        images[slideIndex-1].style.maxHeight = window.innerHeight * 0.65 + "px";
-        images[slideIndex-1].style.maxWidth = window.innerWidth * 0.90 + "px";
+        images[slideIndex-1].style.maxHeight = window.innerHeight * 1.2 + "px";
+        images[slideIndex-1].style.maxWidth = window.innerWidth + "px";
+        images[slideIndex-1].style.width = window.innerWidth  + "px";
         var aspect_r = 16/9;
-        if (slideIndex!== 1)
-        {
-            aspect_r = 4.5/3;
-            images[slideIndex-1].style.width = "75%";
-        }
 
-        var imgw = window.innerHeight * 0.65 * aspect_r;
+
+        var imgw = window.innerHeight * 1.01 *  aspect_r;
         var approx_left_margin = (window.innerWidth - imgw)/2;
-        carousel.marginLeft = 0.99*approx_left_margin + "px";
+
 
         if (window.innerHeight>window.innerWidth)
         {
             images[slideIndex-1].style.maxHeight = 500 + "px";
             images[slideIndex-1].style.maxWidth = 800 + "px";
-            if (slideIndex!== 1)
-            {
-                aspect_r = 1.15;
-            }
             imgw = 450 * aspect_r;
             approx_left_margin = (window.innerWidth - imgw)/2;
             carousel.marginLeft = 0.99*approx_left_margin + "px";
@@ -71,11 +72,15 @@
 
             document.getElementById("hcontent").style.marginLeft =  (window.innerWidth - 300)/2;
 
-        }
+        } else
+            {
+                carousel.marginTop = '-' + window.innerHeight*0.15 + "px";
+                images[slideIndex-1].style.height = window.innerHeight * 1.5 + "px";
+            }
 
 
         //alert("window size:" + window.innerWidth + " image size:" + imgw);
-        setTimeout(showSlides, 5000); // Change image every 5 seconds
+        setTimeout(showSlides, 7000); // Change image every 5 seconds
     }
 </script>
 

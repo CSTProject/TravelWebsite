@@ -20,17 +20,18 @@
     #bod{
 
         position: relative;
-        background: url("{% static 'Home/m.jpg' %}") no-repeat center center fixed;
+        background: url("{% static 'Home/test2.jpg' %}") no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-		font-family: 'Bree Serif', serif;
+        font-family: 'Dosis', sans-serif;
         min-height:100%;
         height: auto;
         width: 100%;
         opacity: 1.0;
-        margin-top: -10px;
+        margin-top: 0px;
+        overflow: auto;
     }
 
 html,body{
@@ -73,8 +74,9 @@ a{
     }
     #register{
         margin: auto;
+        margin-top: 20px;
         width: 30%;
-        min-width: 250px;
+        min-width: 400px;
 
     }
 .fhead{
@@ -101,9 +103,6 @@ a{
         font-family: 'Amatic SC', cursive;
         font-size: 1.8em;
         color: #E71D36;
-    }
-    .lfont{
-        font-size: 3em;
     }
     input[type="text"],input[type="date"],input[type="number"],input[type="password"]{
         border-radius: 4px;
@@ -143,9 +142,10 @@ input[type="submit"]:hover{
     color: #E71D36;
 }
 
-div{
-	   
-    }
+img
+{
+    z-index: -1;
+}
     .flight-form {
         height: auto;
         background-color: white;
@@ -156,47 +156,16 @@ div{
         border-radius: 8px;
         animation-delay: 0.8s;
     }
-    #offers{
-        height: 250px;
-        width: 80%;
-        background-color: white;
-        margin: 10px 10px 10px 10px;		
-        padding: 10px;
-        opacity: 0.6;
-    }
-	
-    .adds{
-        background-color: rgba(200,200,200,0.5);
-        margin: 5px 5px 5px 5px;
-        float: left;
-        width: 23.5%;
-        height: auto;
-    }
-    .adds:hover{
-        background-color: rgba(200,200,200,1.0);
-    }
-    .add-text{
-        height: 100px;
-        width: 25%;
-    }
-    .offer-img{
-        margin: auto;
-		width: 100%;
-        height: 130px;
-		
-    }
-    .add-img{
-        width: 100%;
-        height: 140px;
-    }
+
     #flight {
         padding: 10px 10px 10px 10px;
     }
     #navigation-bar {
         margin: 10px;
-        background-color: #154462;
+        background-color: #15446200;
         color: #EBEBD3;
 		height: 4em;
+        position: relative;
     }
     input {
         display: inline-flex;
@@ -205,7 +174,7 @@ div{
         box-sizing: border-box;
     }
     h1 {
-        font-family: 'Bree Serif', serif;
+        font-family: 'Dosis', sans-serif;
         color: #f99d20;
         padding: 10px 10px 10px 10px;
     }
@@ -288,7 +257,7 @@ div{
         border-radius: 20px;
         width:30%;
         margin-top: 20%;
-        min-width:200px;
+        min-width:400px;
         margin: auto;
     }
     .fbox {
@@ -344,18 +313,14 @@ div{
         -moz-border-radius:;
         border-radius:8px;
         margin-left: auto;
-		margin-right: auto;		
-		margin-bottom: 10px
-
+		margin-right: auto;
         text-wrap: normal;
         font-weight: 700;
         font-size: 2.9rem;
-        height: 3em;
         
         color:#FDFFFC;
         -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: #ebebd3;
-        font-family: 'roboto' sans-serif;
+        -webkit-text-stroke-color: #011627;
         display: table;
 
     }
@@ -495,16 +460,16 @@ div{
 
     /* Slideshow container */
     .slideshow-container {
-        position: relative;
+        position: fixed;
         margin: auto;
     }
 
     /* Fading animation */
     .fade {
         -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
+        -webkit-animation-duration: 0.25s;
         animation-name: fade;
-        animation-duration: 1.5s;
+        animation-duration: 0.25s;
     }
 
     @-webkit-keyframes fade {
@@ -516,11 +481,21 @@ div{
         from {opacity: .4}
         to {opacity: 1}
     }
+    #tagcontent
+    {
+        text-wrap: normal;
+        font-weight: 400;
+        font-size: 1.2rem;
+        margin-left: auto;
+        margin-right: auto;
+        height: 2em;
 
-    /* On smaller screens, decrease text size */
-    @media only screen and (max-width: 300px) {
-
+        color:#ebebd3;
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: #000000;
+        display: table;
     }
+
     </style>
     <script src = "{% static 'js/awesomplete.js' %}" ></script>
 	</head>
@@ -534,9 +509,9 @@ div{
                 <li class="nav-list-left" id="hotel-btn"><a href="/hotel/" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-bed fa-2x" aria-hidden="true"></i><br><span class="mini">HOTELS</span></a></li>
                 <li class="nav-list-left" id="train-btn"><a href="/trains/" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-train fa-2x" aria-hidden="true"></i><br><span class="mini">TRAINS</span></a></li>
                 <li class="nav-list-left" id="bus-btn"><a href="/bus" class="a" onmouseover="hover2(this)" onmouseout="nohover2(this)"><i class="fa fa-bus fa-2x" aria-hidden="true"></i><br><span class="mini">BUSES</span></a></li>
-                <li class="nav-list-right" onmouseover="hover2()" onmouseout="nohover2()" id="support">
+                <li class="nav-list-right" onmouseover="hover2(this)" onmouseout="nohover2(this)" id="support">
                     <a onclick="document.getElementById('id02').style.display='block'" class="a" style="width:auto;">SUPPORT</a></li>
-                <li class="nav-list-right"  onmouseover="hover2()" onmouseout="nohover2()" id="login">
+                <li class="nav-list-right"  onmouseover="hover2(this)" onmouseout="nohover2(this)" id="login">
                 <a onclick="document.getElementById('id01').style.display='block'" class="a" style="width:auto;">LOGIN</a>
 
                 </li>
@@ -603,7 +578,7 @@ div{
             if (window.innerHeight > window.innerWidth)
             {
                 var body = document.getElementById('bod').style;
-                body.background = "url(\"{% static 'Home/maap.jpg' %}\") no-repeat center center fixed";
+                body.background = "url(\"{% static 'Home/test2.jpg' %}\") no-repeat center center fixed";
                 body.webkitBackgroundSize = "cover";
                 body.mozBackgroundSize = "cover";
                 body.oBackgroundSize = "cover";
@@ -648,13 +623,15 @@ div{
                 document.getElementById('navigation-bar').style.height = '5em';
                select.style.border="2px solid #083d77";
                select.style.borderTop = "none";
-               select.addClass('fa-3x');
+
+                document.getElementById('bod').style.marginTop = "-10px";
 
             }
             function nohover2(select){
                 document.getElementById('navigation-bar').style.height = '4em';
                 select.style.border="none";
-                select.removeClass('fa-3x');
+
+                document.getElementById('bod').style.marginTop = "0px";
             }
             // Get the modal
             var modal = document.getElementById('id01');
